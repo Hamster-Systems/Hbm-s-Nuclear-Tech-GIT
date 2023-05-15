@@ -50,6 +50,12 @@ public class RenderAccessoryUtility {
 		if(uuid.equals(Library.Drillgon)) {
 			return drillgon;
 		}
+		if(uuid.equals(Library.Callum)) {
+			return hbm;
+		}
+		if(uuid.equals(Library.Cold)) {
+			return hbm2;
+		}
 		if(uuid.equals(Library.Dafnik)) {
 			return dafnik;
 		}
