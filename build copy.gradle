@@ -26,7 +26,7 @@ apply plugin: 'maven-publish'
 
 version = '1.9.4-a'
 group = 'com.hbm' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'NTM-Extended-1.12.2'
+archivesBaseName = 'Hbms Nuclear Tech - Hamster Reloaded - 1.12.2'
 
 compileJava.options.encoding = 'UTF-8'
 tasks.withType(JavaCompile) {
