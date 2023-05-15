@@ -60,8 +60,9 @@ public class HTTPHandler {
 	}
 
 	private static void loadVersion() throws IOException {
+	
 
-		URL github = new URL("https://raw.githubusercontent.com/Alcatergit/Hbm-s-Nuclear-Tech-GIT/Custom-1.12.2/src/main/java/com/hbm/lib/RefStrings.java");
+		URL github = new URL("https://raw.githubusercontent.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT/Custom-1.12.2/src/main/java/com/hbm/lib/RefStrings.java");
         BufferedReader in = new BufferedReader(new InputStreamReader(github.openStream()));
 
         MainRegistry.logger.info("Searching for new versions...");
