@@ -1,11 +1,10 @@
 [
   {
     "modid": "hbm",
-    "name": "HBM's Nuclear Tech - Extended Edition",
-    "description": "A mod that adds all kinds of nukes and other things",
+    "name": "Hbms Nuclear Tech - Hamster Reloaded",
+    "description": "A mod that adds all kinds of nukes and other things and crazy reactors of mass destruction",
     "version": "${version}",
     "credits": "\n\nHBMMods: Orignal creator\nDrillgon200: original 1.12.2 porter\nTheOriginalGolem: 1.12.2 bug fixing porter\nAlcater: Custom 1.12.2 extended version, updating and texturing\n\nCtech Gameing: Hamstering things up\n Coldalliance: Testing and helping with development\n\nHoboy: textures and models\n\nCrowbar Collective: gluon gun sounds\n70000HP: MIRV and configs\n",
-    "logoFile": "assets/hbm/textures/logo.png",
     "mcversion": "${mcversion}",
     "url": "https://github.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT",
     "updateUrl": "https://legacy.curseforge.com/minecraft/mc-mods/hbms-nuclear-tech-hamster-reloaded/files",
