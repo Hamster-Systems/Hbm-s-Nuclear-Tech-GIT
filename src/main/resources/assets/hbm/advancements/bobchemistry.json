@@ -1,0 +1,22 @@
+{
+	"display": {
+		"icon": {
+			"item": "hbm:bob_chemistry"
+		},
+		"title": {
+			"translate": "hbm.achievement.bobchemistry"
+		},
+		"description": {
+			"translate": "hbm.achievement.bobchemistry.desc"
+		}
+	},
+	"parent": "hbm:bobassembly",
+	"criteria": {
+		"impossible": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+    "rewards": {
+        "experience": 100
+    }
+}

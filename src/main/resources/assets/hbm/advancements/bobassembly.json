@@ -1,0 +1,22 @@
+{
+	"display": {
+		"icon": {
+			"item": "hbm:bob_assembly"
+		},
+		"title": {
+			"translate": "hbm.achievement.bobassembly"
+		},
+		"description": {
+			"translate": "hbm.achievement.bobassembly.desc"
+		}
+	},
+	"parent": "hbm:bobmetalworks",
+	"criteria": {
+		"impossible": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+    "rewards": {
+        "experience": 50
+    }
+}

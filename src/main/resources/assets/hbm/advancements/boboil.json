@@ -1,0 +1,22 @@
+{
+	"display": {
+		"icon": {
+			"item": "hbm:bob_oil"
+		},
+		"title": {
+			"translate": "hbm.achievement.boboil"
+		},
+		"description": {
+			"translate": "hbm.achievement.boboil.desc"
+		}
+	},
+	"parent": "hbm:bobchemistry",
+	"criteria": {
+		"impossible": {
+			"trigger": "minecraft:impossible"
+		}
+	},
+    "rewards": {
+        "experience": 100
+    }
+}
