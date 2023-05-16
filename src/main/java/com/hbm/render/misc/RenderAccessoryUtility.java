@@ -54,7 +54,7 @@ public class RenderAccessoryUtility {
 			return hbm;
 		}
 		if(uuid.equals(Library.Cold)) {
-			return hbm2;
+			return hbm;
 		}
 		if(uuid.equals(Library.Dafnik)) {
 			return dafnik;
