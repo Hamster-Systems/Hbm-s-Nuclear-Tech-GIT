@@ -1,5 +1,5 @@
 
-# **HBM Nuclear Tech Mod - 1.12.2 Extended Edition**
+# **HBM Nuclear Tech Mod - 1.12.2 Hamster Reloaded**
 
 # CraftTweaker Integration
 Removing of oreDict recipes is currently not supported.

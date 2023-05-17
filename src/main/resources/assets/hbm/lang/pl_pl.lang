@@ -1,4 +1,4 @@
-key.categories.hbm=Hbm's Nuclear Tech Mod
+key.categories.hbm=Hbm's Nuclear Tech Mod - Hamster Reloaded
 key.jetpack_activate=Włącz Jetpack
 key.jetpack_hover=Włącz Jetpack Tryb Lewitowania
 key.jetpack_hud=Tryb HUD Jetpacka
@@ -462,7 +462,7 @@ weapon.ability.chainsaw=Painsaw
 weapon.ability.fire=Płomienny
 # Should rhyme with the translation for "chainsaw"
 
-hbm.advancement.root=NTM Extended
+hbm.advancement.root=NTM Hamster Reloaded
 hbm.advancement.root.desc=I tak oto się zaczyna nuklearna przygoda.
 
 hbm.achievement.progress_dosimeter=Dozymetr
@@ -1340,7 +1340,7 @@ tile.machine_missile_assembly.name=Stacja Konstrukcyjna Rakiet
 container.missileAssembly=Stacja Konstrukcyjna Rakiet
 tile.sat_dock.name=Płyta Lądowania Ładunku
 container.satDock=Płyta Lądowania Ładunku
-tile.book_guide.name=Hbm's Nuclear Tech Mod Manual [LEGACY]
+tile.book_guide.name=Hbm's Nuclear Tech Mod - Hamster Reloaded Manual [LEGACY]
 tile.machine_schrabidium_transmutator.name=Urządzenie Transmutacji Skrabidu
 container.machine_schrabidium_transmutator=Urządzenie Transmutacji Skrabidu
 container.microwave=Mikrofala

@@ -1,4 +1,4 @@
-# <u>**HBM Nuclear Tech Mod - 1.12.2 Extended Edition**</u>
+# <u>**HBM Nuclear Tech Mod - 1.12.2 Hamster Reloaded**</u>
 
 This is Hamster Systems 1.12.2 custom version of the mod
 

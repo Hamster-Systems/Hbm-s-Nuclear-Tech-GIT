@@ -38,7 +38,7 @@
 
 # Should rhyme with the translation for "chainsaw"
 
-hbm.advancement.root=NTM Extended
+hbm.advancement.root=NTM Hamster Reloaded
 hbm.advancement.root.desc=И вот начинается ядерное приключение
 
 hbm.achievement.progress_dosimeter=Дозиметр
@@ -2873,7 +2873,7 @@ itemGroup.tabWeapon=Оружие и турели NTM
 
 
 
-key.categories.hbm=Nuclear Tech Mod - Extended Edition
+key.categories.hbm=Nuclear Tech Mod - Hamster Reloaded
 key.categories.hbm.craneLoad=Кран РБМК загрузить/выгрузить
 key.categories.hbm.craneMoveDown=Кран РБМК назад
 key.categories.hbm.craneMoveLeft=Кран РБМК налево
