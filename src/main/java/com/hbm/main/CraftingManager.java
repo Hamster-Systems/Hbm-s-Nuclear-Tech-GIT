@@ -72,7 +72,7 @@ public class CraftingManager {
 	public static void addCrafting(){
 
 		// Woods
-		addRecipeAuto(new ItemStack(ModBlocks.pink_log, 1), new Object[] { "RS", "", "", 'R', new ItemStack(Items.DYE, 1, 9), 'S', KEY_PLANKS });
+		addRecipeAuto(new ItemStack(ModBlocks.pink_log, 1), new Object[] { "RS", 'R', new ItemStack(Items.DYE, 1, 9), 'S', KEY_LOG });
 		
 
 		addRecipeAuto(new ItemStack(ModItems.redstone_sword, 1), new Object[] { "R", "R", "S", 'R', Blocks.REDSTONE_BLOCK, 'S', Items.STICK });
