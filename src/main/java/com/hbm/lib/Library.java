@@ -69,6 +69,7 @@ public class Library {
 	//this is a list of UUIDs used for various things, primarily for accessories.
 	//for a comprehensive list, check RenderAccessoryUtility.java
 	public static String HbMinecraft = "192af5d7-ed0f-48d8-bd89-9d41af8524f8";
+	public static String TacoRedneck = "5aee1e3d-3767-4987-a222-e7ce1fbdf88e";
 	// Earl0fPudding
 	public static String LPkukin = "937c9804-e11f-4ad2-a5b1-42e62ac73077";
 	public static String Dafnik = "3af1c262-61c0-4b12-a4cb-424cc3a9c8c0";
@@ -101,8 +102,6 @@ public class Library {
 			"06ab7c03-55ce-43f8-9d3c-2850e3c652de", //mustang_rudolf
 			"5bf069bc-5b46-4179-aafe-35c0a07dee8b", //JMF781
 			});
-	public static String Callum = "ca83738e-7b91-4f7b-b2cd-b868adf13d34";
-	public static String Cold = "ce11746e-af01-4020-ad0b-0f36b1758f67";
 
 
 	public static final ForgeDirection POS_X = ForgeDirection.EAST;
@@ -114,7 +113,7 @@ public class Library {
 
 	public static final int[] powersOfTen = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
 
-	public static DecimalFormat numberformat = new DecimalFormat("#.00");
+	public static DecimalFormat numberformat = new DecimalFormat("0.00");
 		
 	//the old list that allowed superuser mode for the ZOMG
 	//currently unused
@@ -123,16 +122,16 @@ public class Library {
 	// Drillgon200: Not like super users are used for anything, but they could
 	// in the future I guess.
 	public static void initSuperusers() {
-		// superuser.add(HbMinecraft);
-		// // superuser.add(TacoRedneck);
-		// superuser.add(LPkukin);
-		// superuser.add(Dafnik);
-		// superuser.add(a20);
-		// superuser.add(rodolphito);
-		// // Drillgon200: Pretty sure he did install NEI.
-		// superuser.add(Ducxkskiziko);
-		// superuser.add(Drillgon);
-		// superuser.add(Alcater);
+		superuser.add(HbMinecraft);
+		superuser.add(TacoRedneck);
+		superuser.add(LPkukin);
+		superuser.add(Dafnik);
+		superuser.add(a20);
+		superuser.add(rodolphito);
+		// Drillgon200: Pretty sure he did install NEI.
+		superuser.add(Ducxkskiziko);
+		superuser.add(Drillgon);
+		superuser.add(Alcater);
 	}
 
 	public static boolean checkForHeld(EntityPlayer player, Item item) {
@@ -142,6 +141,16 @@ public class Library {
 	public static boolean isObstructed(World world, double x, double y, double z, double a, double b, double c) {
 		RayTraceResult pos = world.rayTraceBlocks(new Vec3d(x, y, z), new Vec3d(a, b, c), false, true, true);
 		return pos != null && pos.typeOfHit != Type.MISS;
+	}
+
+	public static int getColorProgress(double fraction){
+		int r = (int)(255*Math.min(1, fraction*-2+2));
+		int g = (int)(255*Math.min(1, fraction*2));
+		return 65536 * r + 256 * g;
+	}
+
+	public static String getPercentage(double fraction){
+		return numberformat.format(roundFloat(fraction*100D, 2));
 	}
 
 	public static String getShortNumber(long l) {
