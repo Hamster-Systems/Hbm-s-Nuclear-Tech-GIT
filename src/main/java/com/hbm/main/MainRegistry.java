@@ -240,9 +240,9 @@ import com.hbm.inventory.DFCRecipes;
 import com.hbm.inventory.DiFurnaceRecipes;
 import com.hbm.inventory.PotionRecipes;
 import com.hbm.inventory.SAFERecipes;
-import com.hbm.inventory.BoilerRecipes;
 import com.hbm.inventory.StorageDrumRecipes;
 import com.hbm.inventory.NuclearTransmutationRecipes;
+import com.hbm.inventory.HeatRecipes;
 import com.hbm.inventory.control_panel.ControlEvent;
 import com.hbm.inventory.control_panel.ControlRegistry;
 import com.hbm.items.ModItems;
@@ -320,6 +320,8 @@ import com.hbm.tileentity.machine.rbmk.TileEntityRBMKReflector;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRodReaSim;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKStorage;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKCooler;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKHeater;
 import com.hbm.tileentity.turret.TileEntityTurretBrandon;
 import com.hbm.tileentity.turret.TileEntityTurretCIWS;
 import com.hbm.tileentity.turret.TileEntityTurretCheapo;
@@ -795,6 +797,8 @@ public class MainRegistry {
 		GameRegistry.registerTileEntity(TileEntityRBMKOutgasser.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_outgasser"));
 		GameRegistry.registerTileEntity(TileEntityRBMKStorage.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_storage"));
 		GameRegistry.registerTileEntity(TileEntityRBMKConsole.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_console"));
+		GameRegistry.registerTileEntity(TileEntityRBMKCooler.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_cooler"));
+		GameRegistry.registerTileEntity(TileEntityRBMKHeater.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_heater"));
 		GameRegistry.registerTileEntity(TileEntityRBMKCraneConsole.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_crane_console"));
 		GameRegistry.registerTileEntity(TileEntityRBMKInlet.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_inlet"));
 		GameRegistry.registerTileEntity(TileEntityRBMKOutlet.class, new ResourceLocation(RefStrings.MODID, "tileentity_rbmk_outlet"));
@@ -1064,7 +1068,6 @@ public class MainRegistry {
 		AssemblerRecipes.loadRecipes();
 		ChemplantRecipes.registerRecipes();
 		CrackRecipes.registerRecipes();
-		BoilerRecipes.registerRecipes();
 		ExplosionNukeGeneric.loadSoliniumFromFile();
 		CyclotronRecipes.register();
 		HadronRecipes.register();
@@ -1081,6 +1084,8 @@ public class MainRegistry {
 		SAFERecipes.registerRecipes();
 		StorageDrumRecipes.registerRecipes();
 		NuclearTransmutationRecipes.registerRecipes();
+		
+		HeatRecipes.registerHeatRecipes();
 		
 		FluidContainerRegistry.registerContainer(Item.getItemFromBlock(ModBlocks.lox_barrel), ModItems.tank_steel, new FluidStack(ModForgeFluids.oxygen, 10000));
 		FluidContainerRegistry.registerContainer(Item.getItemFromBlock(ModBlocks.pink_barrel), ModItems.tank_steel, new FluidStack(ModForgeFluids.kerosene, 10000));

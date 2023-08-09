@@ -9,6 +9,7 @@ import com.hbm.inventory.control_panel.GuiControlEdit;
 import com.hbm.inventory.gui.*;
 import com.hbm.items.ModItems;
 import com.hbm.tileentity.IGUIProvider;
+
 import com.hbm.tileentity.bomb.TileEntityBombMulti;
 import com.hbm.tileentity.bomb.TileEntityCompactLauncher;
 import com.hbm.tileentity.bomb.TileEntityLaunchPad;
@@ -26,6 +27,7 @@ import com.hbm.tileentity.bomb.TileEntityNukePrototype;
 import com.hbm.tileentity.bomb.TileEntityNukeSolinium;
 import com.hbm.tileentity.bomb.TileEntityNukeTsar;
 import com.hbm.tileentity.bomb.TileEntityRailgun;
+
 import com.hbm.tileentity.machine.TileEntityAMSBase;
 import com.hbm.tileentity.machine.TileEntityAMSEmitter;
 import com.hbm.tileentity.machine.TileEntityAMSLimiter;
@@ -113,6 +115,8 @@ import com.hbm.tileentity.machine.rbmk.TileEntityRBMKControlManual;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKOutgasser;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKStorage;
+import com.hbm.tileentity.machine.rbmk.TileEntityRBMKHeater;
+
 import com.hbm.tileentity.turret.TileEntityTurretChekhov;
 import com.hbm.tileentity.turret.TileEntityTurretFriendly;
 import com.hbm.tileentity.turret.TileEntityTurretFritz;
@@ -700,6 +704,11 @@ public class GuiHandler implements IGuiHandler {
 		case ModBlocks.guiID_rbmk_storage:
 			if(entity instanceof TileEntityRBMKStorage) {
 				return new ContainerRBMKStorage(player.inventory, (TileEntityRBMKStorage) entity);
+			}
+			return null;
+		case ModBlocks.guiID_rbmk_heater:
+			if(entity instanceof TileEntityRBMKHeater) {
+				return new ContainerRBMKHeater(player.inventory, (TileEntityRBMKHeater) entity);
 			}
 			return null;
 		case ModBlocks.guiID_rbmk_boiler:
@@ -1314,6 +1323,11 @@ public class GuiHandler implements IGuiHandler {
 		case ModBlocks.guiID_rbmk_storage:
 			if(entity instanceof TileEntityRBMKStorage) {
 				return new GUIRBMKStorage(player.inventory, (TileEntityRBMKStorage) entity);
+			}
+			return null;
+		case ModBlocks.guiID_rbmk_heater:
+			if(entity instanceof TileEntityRBMKHeater) {
+				return new GUIRBMKHeater(player.inventory, (TileEntityRBMKHeater) entity);
 			}
 			return null;
 		case ModBlocks.guiID_rbmk_boiler:
