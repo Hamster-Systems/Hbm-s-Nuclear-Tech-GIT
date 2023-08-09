@@ -4568,4 +4568,6 @@ commands.hbmrad.not_rad=Please enter new rad value!
 commands.hbmrad.not_found_player=Cannot find player %1$s!
 tile.bomb.tnt_enabled=[ Ignite On Break: Enabled ]
 tile.bomb.tnt_disabled=[ Ignite On Break: Disaabled ]
+
 item.ingot_firebrick.name=Firebrick
+item.ball_fireclay.name=Fireclay
