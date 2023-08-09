@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class ItemTooling extends Item {
 
-	ToolType type;
+	protected ToolType type;
 	
 	public ItemTooling(ToolType type, int dura, String s) {
 		this.setUnlocalizedName(s);
@@ -57,4 +57,8 @@ public class ItemTooling extends Item {
 			tooltip.add("Could be used instead of a fuse...");
 		}
 	}
+	public ToolType getType(){
+		return type;
+	}
 }
+
