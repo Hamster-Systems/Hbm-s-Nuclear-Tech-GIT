@@ -36,6 +36,7 @@ tasks.withType(JavaCompile) {
 }
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+// sourceSets {main { output.resourcesDir = output.classesDir }}
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
