@@ -2,6 +2,7 @@ package com.hbm.tileentity;
 
 import api.hbm.energy.IEnergyUser;
 
+import api.hbm.tile.IHeatSource;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -11,13 +12,15 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergyUser {
+public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergyUser, IHeatSource {
 
 	TileEntity tile;
 	boolean inventory;
 	boolean power;
 	boolean fluid;
 	
+	boolean heat;
+
 	public TileEntityProxyCombo() {
 	}
 	
@@ -25,6 +28,14 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 		this.inventory = inventory;
 		this.power = power;
 		this.fluid = fluid;
+		this.heat = false;
+	}
+
+	public TileEntityProxyCombo(boolean inventory, boolean power, boolean fluid, boolean heat) {
+		this.inventory = inventory;
+		this.power = power;
+		this.fluid = fluid;
+		this.heat = heat;
 	}
 
 	// fewer messy recursive operations
@@ -119,6 +130,8 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 		inventory = compound.getBoolean("inv");
 		fluid = compound.getBoolean("flu");
 		power = compound.getBoolean("pow");
+		heat = compound.getBoolean("hea");
+
 		super.readFromNBT(compound);
 	}
 	
@@ -127,6 +140,7 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 		compound.setBoolean("inv", inventory);
 		compound.setBoolean("flu", fluid);
 		compound.setBoolean("pow", power);
+		compound.setBoolean("hea", heat);
 		return super.writeToNBT(compound);
 	}
 	
@@ -143,5 +157,28 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 	@Override
 	public void handleUpdateTag(NBTTagCompound tag) {
 		this.readFromNBT(tag);
+	}
+	
+	@Override
+	public int getHeatStored() {
+		if (!this.heat) {
+			return 0;
+		}
+
+		if (getTile() instanceof IHeatSource) {
+			return ((IHeatSource) getTile()).getHeatStored();
+		}
+		return 0;
+	}
+
+	@Override
+	public void useUpHeat(int heat) {
+		if (!this.heat) {
+			return;
+		}
+
+		if (getTile() instanceof IHeatSource) {
+			((IHeatSource) getTile()).useUpHeat(heat);
+		}
 	}
 }
