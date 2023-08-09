@@ -1583,6 +1583,10 @@ tile.heater_oilburner.name=Fluid Burner
 tile.heater_oilburner.desc=Burns fluids to produce heat.$Can be configured with a screwdriver.
 tile.heater_oven.name=Heating Oven
 tile.heater_oven.desc=Burns solid fuel to produce heat.$Accepts heat from the bottom with 50%% efficiency.
+
+tile.heater_heatex.name=Heat Exchanging Heater
+tile.heater_heatex.desc=Produces heat from hot fluids.
+
 tile.furnace_steel.name=Steel Furnace
 tile.heat_boiler.name=Large Boiler
 tile.heat_boiler.desc=Large boiler that can boil water or heat up oil.$Requires external heat source.$Heat transfer rate: ΔT*0.01 TU/t
@@ -1590,6 +1594,7 @@ tile.furnace_steel.desc=Very large furnace that can provide bonus items$when sme
 container.heater_firebox=Firebox
 container.heaterOven=Heating Oven
 container.heaterOilburner=Fluid Burner
+
 
 tile.barrel_plastic.name=Safe Barrel™
 tile.barrel_corroded.name=Corroded Barrel
@@ -4561,6 +4566,7 @@ container.orbus=Heavy Antimatter Storage
 container.bat9000=Big-Ass Tank 9000
 container.anvil=Tier %s Anvil
 container.heaterFirebox=Firebox
+container.heaterHeatex=Heat Exchanger 
 container.furnaceSteel=Steel Furnace
 item.charge_railgun.name=Deuterium Plasma Capsule
 item.ducc.name=ducc
