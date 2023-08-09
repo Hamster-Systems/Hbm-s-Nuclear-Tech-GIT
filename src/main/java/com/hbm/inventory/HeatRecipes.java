@@ -14,7 +14,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidRegistry;
 
 public class HeatRecipes {
-
+	
 	public static HashMap<Fluid, Fluid> hotFluids = new HashMap<Fluid, Fluid>();
 	public static HashMap<Fluid, Integer> requiredTU = new HashMap<Fluid, Integer>();
 	public static HashMap<Fluid, Integer> inputAmountHot = new HashMap<Fluid, Integer>();
@@ -29,7 +29,7 @@ public class HeatRecipes {
 	public static void registerHeatRecipes() {
 		addBoilRecipe(new FluidStack(FluidRegistry.WATER, 1), new FluidStack(ModForgeFluids.steam, 100), 100);
 		addCoolRecipe(new FluidStack(ModForgeFluids.steam, 100), new FluidStack(ModForgeFluids.spentsteam, 1), 100);
-
+		
 		addBoilAndCoolRecipe(new FluidStack(ModForgeFluids.steam, 10), new FluidStack(ModForgeFluids.hotsteam, 1), 2);
 		addBoilAndCoolRecipe(new FluidStack(ModForgeFluids.hotsteam, 10), new FluidStack(ModForgeFluids.superhotsteam, 1), 10);
 		addBoilAndCoolRecipe(new FluidStack(ModForgeFluids.superhotsteam, 10), new FluidStack(ModForgeFluids.ultrahotsteam, 1), 120);
@@ -40,7 +40,7 @@ public class HeatRecipes {
 		//Compat
 		addBoilRecipe("crude_oil", 1, "hotoil", 1, 300); //thermalfoundation
 		addBoilRecipe("oilgc", 1, "hotoil", 1, 300); //galacticraft
-		addBoilRecipe("biofuel", 1, "fuel", 1, 100); //galacticraft
+		addBoilRecipe("biofuel", 1, "fuel", 1, 100); //galacticraft & industrialforegoing
 		addBoilRecipe("petroil", 1, "fuel", 1, 100); //galacticraft
 		addBoilRecipe("refined_fuel", 1, "petroil", 1, 100); //thermalfoundation
 		addBoilRecipe("sulphuricacid", 1, "sulfuric_acid", 1, 100); //galacticraft
@@ -51,7 +51,7 @@ public class HeatRecipes {
 		addBoilAndCoolRecipe("liquidhydrogen", 1, "hydrogen", 1, 1); //mekanism
 		addBoilRecipe("refined_biofuel", 1, "biofuel", 1, 10); //thermalfoundation
 		// addBoilAndCoolRecipe("cryotheum", 1, "pyrotheum", 1, 1000); //thermalfoundation
-
+		addBoilAndCoolRecipe("ic2coolant", 1, "hydrogen", 1, 450); //mekanism", 1, 1); //IC2
 		setFluidsForRBMKLoader();
 	}
 
