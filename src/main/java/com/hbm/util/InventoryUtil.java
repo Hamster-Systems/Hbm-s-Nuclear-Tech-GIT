@@ -337,9 +337,6 @@ public class InventoryUtil {
 			if (ingredient == null) {
 				continue;
 			}
-
-			System.out.println("Checking " + ingredient);
-
 			for (ItemStack input : copy) {
 				if (input == null || input.isEmpty()) {
 					continue;
