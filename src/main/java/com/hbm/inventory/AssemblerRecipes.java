@@ -232,7 +232,7 @@ public class AssemblerRecipes {
 				new ComparableStack(ModItems.drillbit_ferro),
 				new OreDictStack(DIAMOND.dust(), 64)
 			}, 100);
-			makeRecip e(new ComparableStack(ModItems.drillbit_dnt), new AStack[] {
+			makeRecipe(new ComparableStack(ModItems.drillbit_dnt), new AStack[] {
 				new ComparableStack(ModItems.ingot_dineutronium, 32),
 				new OreDictStack(GH336.ingot(), 24),
 				new ComparableStack(ModItems.ingot_chainsteel, 8),
