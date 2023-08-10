@@ -20,9 +20,10 @@ public class TileEntityHadronPower extends TileEntityTickingBase implements IEne
 			this.networkPack(data, 15);
 		}
 	}
-
+	
+	@Override
 	public String getInventoryName(){
-		return "Hadron_Power";
+		return "Hadron Power Thing";
 	}
 
 	@Override
