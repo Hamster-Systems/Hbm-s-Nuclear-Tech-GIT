@@ -26,7 +26,8 @@ public class BlockCluster extends Block implements IDrillInteraction {
 		super(mat);
 		this.setUnlocalizedName(s);
 		this.setRegistryName(s);
-		
+		this.setHarvestLevel("pickaxe", 3);
+
 		ModBlocks.ALL_BLOCKS.add(this);
 	}
 

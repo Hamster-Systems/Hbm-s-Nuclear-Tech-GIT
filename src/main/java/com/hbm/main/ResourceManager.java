@@ -240,6 +240,9 @@ public class ResourceManager {
 	//Crystallizer
 	public static final IModelCustom crystallizer = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/crystallizer.obj"));
 
+	//Excavator
+	public static final ResourceLocation excavator_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/excavator.png");
+	
 	//Cyclotron
 	public static final IModelCustom cyclotron = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/cyclotron.obj"));
 
@@ -703,6 +706,9 @@ public class ResourceManager {
 	public static final ResourceLocation crystallizer_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer.png");
 	public static final ResourceLocation crystallizer_spinner_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer_spinner.png");
 	public static final ResourceLocation crystallizer_window_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer_window.png");
+
+	//Excavator
+	public static final IModelCustom excavator = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/excavator.obj"));
 
 	//Cyclotron
 	public static final ResourceLocation cyclotron_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/cyclotron.png");

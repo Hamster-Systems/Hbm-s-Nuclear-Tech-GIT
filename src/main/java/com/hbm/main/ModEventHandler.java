@@ -114,6 +114,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
@@ -154,6 +155,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -713,7 +715,6 @@ public class ModEventHandler {
 		if(!player.world.isRemote && event.phase == Phase.START){
 			ItemDigammaDiagnostic.playVoices(player.world, player);
 		}
-		
 
 		if(player.world.isRemote && event.phase == Phase.START && !player.isInvisible() && !player.isSneaking()) {
 
@@ -768,7 +769,7 @@ public class ModEventHandler {
 					ContaminationUtil.contaminate(attacker, HazardType.RADIATION, ContaminationType.CREATIVE, 690F);
 				}
 			}
-			event.getEntity().entityDropItem(new ItemStack(ModItems.bottle_rad).setStackDisplayName("Cold's §2Neo §aNuka§r"), 0.5F);
+			event.getEntity().entityDropItem(new ItemStack(ModItems.bottle_rad).setStackDisplayName("§aAlcater's §2Neo §aNuka§r"), 0.5F);
 		}
 
 		if(event.getEntity() instanceof EntityTaintedCreeper && event.getSource() == ModDamageSource.boxcar) {
@@ -1153,6 +1154,21 @@ public class ModEventHandler {
 				ItemHot.heatUp(out, done ? 1D : (h1 + h2) / 2D);
 				event.setOutput(out);
 				event.setCost(event.getLeft().getCount());
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
+		
+		ItemStack stack = event.getItem();
+		
+		if(stack != null && stack.getItem() instanceof ItemFood) {
+			
+			if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("ntmCyanide")) {
+				for(int i = 0; i < 10; i++) {
+					event.getEntityLiving().attackEntityFrom(rand.nextBoolean() ? ModDamageSource.euthanizedSelf : ModDamageSource.euthanizedSelf2, 1000);
+				}
 			}
 		}
 	}

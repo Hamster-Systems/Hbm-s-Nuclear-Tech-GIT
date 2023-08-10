@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import com.hbm.tileentity.machine.*;
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -501,9 +502,9 @@ import com.hbm.tileentity.machine.TileEntityForceField;
 import com.hbm.tileentity.machine.TileEntityFurnaceIron;
 import com.hbm.tileentity.machine.TileEntityFurnaceSteel;
 import com.hbm.tileentity.machine.TileEntityHeaterOven;
+import com.hbm.tileentity.machine.TileEntityHeaterElectric;
 import com.hbm.tileentity.machine.TileEntityHeaterHeatex;
 import com.hbm.tileentity.machine.TileEntityHeaterOilburner;
-import com.hbm.tileentity.machine.TileEntityHeaterElectric;
 import com.hbm.tileentity.machine.TileEntityHeaterRadioThermal;
 import com.hbm.tileentity.machine.TileEntityGeiger;
 import com.hbm.tileentity.machine.TileEntityHeaterFirebox;
@@ -512,7 +513,6 @@ import com.hbm.tileentity.machine.TileEntityITERStruct;
 import com.hbm.tileentity.machine.TileEntityMachineAssembler;
 import com.hbm.tileentity.machine.TileEntityMachineBAT9000;
 import com.hbm.tileentity.machine.TileEntityMachineCentrifuge;
-import com.hbm.tileentity.machine.TileEntityMachineChemfac;
 import com.hbm.tileentity.machine.TileEntityMachineChemplant;
 import com.hbm.tileentity.machine.TileEntityMachineCrystallizer;
 import com.hbm.tileentity.machine.TileEntityMachineCyclotron;
@@ -525,6 +525,7 @@ import com.hbm.tileentity.machine.TileEntityMachineLargeTurbine;
 import com.hbm.tileentity.machine.TileEntityMachineMiniRTG;
 import com.hbm.tileentity.machine.TileEntityMachineMiningDrill;
 import com.hbm.tileentity.machine.TileEntityMachineMiningLaser;
+import com.hbm.tileentity.machine.TileEntityMachineExcavator;
 import com.hbm.tileentity.machine.TileEntityMachineMissileAssembly;
 import com.hbm.tileentity.machine.TileEntityMachineOrbus;
 import com.hbm.tileentity.machine.TileEntityMachinePlasmaHeater;
@@ -760,6 +761,7 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineCatalyticCracker.class, new RenderCatalyticCracker());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineGasFlare.class, new RenderGasFlare());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineMiningDrill.class, new RenderMiningDrill());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineExcavator.class, new RenderExcavator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineTurbofan.class, new RenderTurbofan());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineUUCreator.class, new RenderUUCreator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRadiobox.class, new RenderRadiobox());
@@ -868,15 +870,14 @@ public class ClientProxy extends ServerProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFEL.class, new RenderFEL());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterFirebox.class, new RenderFirebox());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterOven.class, new RenderHeatingOven());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterOilburner.class, new RenderOilburner());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterRadioThermal.class, new RenderRadioThermal());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterOilburner.class, new RenderOilburner());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterRadioThermal.class, new RenderRadioThermal());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterElectric.class, new RenderHeaterElectric());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeaterHeatex.class, new RenderHeaterHeatex());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFurnaceIron.class, new RenderFurnaceIron());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFurnaceSteel.class, new RenderFurnaceSteel());
-		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDoorGeneric.class, new RenderDoorGeneric());
-
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityFogFX.class, new RenderFogRenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(EntityDSmokeFX.class, new MultiCloudRendererFactory(new Item[] {ModItems.d_smoke1, ModItems.d_smoke2, ModItems.d_smoke3, ModItems.d_smoke4, ModItems.d_smoke5, ModItems.d_smoke6, ModItems.d_smoke7, ModItems.d_smoke8}));
 		RenderingRegistry.registerEntityRenderingHandler(EntityOrangeFX.class, new MultiCloudRendererFactory(new Item[] {ModItems.orange1, ModItems.orange2, ModItems.orange3, ModItems.orange4, ModItems.orange5, ModItems.orange6, ModItems.orange7, ModItems.orange8}));
