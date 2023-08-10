@@ -28,6 +28,10 @@ container.uuCreator=UU Condenser
 fluid.ic2uu_matter=UU-Matter
 hbmfluid.ic2uu_matter=UU-Matter
 
+tile.heater_rt.name=Radioisotope Thermal Heater
+tile.heater_rt.desc=Produces Heat from RTG Pellets
+container.heaterRadioThermal=Radioisotope Thermal Heater
+
 hazard.prot=Protects against hazards:
 hazard.noprot=Does NOT protect against:
 hazard.bacteria=Bacteria / Aerosols

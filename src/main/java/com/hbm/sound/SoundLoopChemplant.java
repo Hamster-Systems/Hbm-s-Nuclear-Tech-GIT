@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hbm.tileentity.machine.TileEntityMachineChemplant;
+import com.hbm.tileentity.machine.TileEntityMachineChemfac;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundEvent;
@@ -27,6 +28,16 @@ public class SoundLoopChemplant extends SoundLoopMachine {
 			if(this.volume != 3)
 				volume = 3;
 			
+			if(!plant.isProgressing)
+				this.donePlaying = true;
+		}
+
+		if(te instanceof TileEntityMachineChemfac) {
+			TileEntityMachineChemfac plant = (TileEntityMachineChemfac)te;
+
+			if(this.volume != 3)
+				volume = 3;
+
 			if(!plant.isProgressing)
 				this.donePlaying = true;
 		}

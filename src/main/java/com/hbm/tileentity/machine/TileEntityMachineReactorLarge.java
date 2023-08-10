@@ -936,6 +936,7 @@ public class TileEntityMachineReactorLarge extends TileEntity implements ITickab
 	}
 	
 	//TODO: turn this steaming hot garbage into hashmaps
+	// seems to be work for now
 	static List<ReactorFuelEntry> fuels = new ArrayList<ReactorFuelEntry>();
 	static List<ReactorWasteEntry> wastes = new ArrayList<ReactorWasteEntry>();
 	

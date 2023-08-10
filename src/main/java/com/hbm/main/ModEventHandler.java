@@ -973,7 +973,7 @@ public class ModEventHandler {
 					ContaminationUtil.contaminate(attacker, HazardType.RADIATION, ContaminationType.CREATIVE, 690F);
 				}
 			}
-			event.getEntity().dropItem(ModItems.bottle_rad, 1);
+			event.getEntity().entityDropItem(new ItemStack(ModItems.bottle_rad).setStackDisplayName("Cold's §2Neo §aNuka§r"), 0.5F);
 		}
 
 		if(event.getEntity() instanceof EntityTaintedCreeper && event.getSource() == ModDamageSource.boxcar) {

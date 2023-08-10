@@ -105,12 +105,13 @@ public class HeaterOilburner extends BlockDummyable implements ITooltipProvider,
         TileEntityHeaterOilburner heater = (TileEntityHeaterOilburner) te;
 
         List<String> text = new ArrayList();
-        text.add("§a-> " + "§r" + heater.setting + " mB/t");
+        text.add(String.format("%,d", heater.heatEnergy) + " TU");
+        text.add("§a-> §r" + heater.setting + " mB/t");
         Fluid type = heater.fluidType;
         int energy = FluidCombustionRecipes.getFlameEnergy(type);
         if (energy != 0) {
             int heat = energy * heater.setting;
-            text.add("§c<-" + "§r" + String.format("%,d", heat) + " TU/t");
+            text.add("§c<- §r" + String.format("%,d", heat) + " TU/t");
         }
 
         ILookOverlay.printGeneric(event, I18nUtil.resolveKey(getUnlocalizedName() + ".name"), 0xffff00, 0x404000, text);
