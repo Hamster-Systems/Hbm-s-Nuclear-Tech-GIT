@@ -294,7 +294,7 @@ public class TileEntityMachineReactorSmall extends TileEntity implements ITickab
 		world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 18.0F, true);
 		ExplosionNukeGeneric.waste(world, pos.getX(), pos.getY(), pos.getZ(), 35);
 		world.setBlockState(pos, ModBlocks.block_corium_cobble.getDefaultState());
-		
+
 		RadiationSavedData.incrementRad(world, pos, 1000F, 2000F);
 		if(MobConfig.enableElementals) {
 			List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5).grow(100, 100, 100));
@@ -307,22 +307,22 @@ public class TileEntityMachineReactorSmall extends TileEntity implements ITickab
 
 	@SuppressWarnings("deprecation")
 	private boolean isContained() {
-		boolean side1 = blocksRad(pos.add(1, 1, 0)) || blocksRad(pos.add(2, 1, 0)) || blocksRad(pos.add(3, 1, 0));
+		boolean side1 = blocksRad(pos.add(1, 1, 0));
 		if(!side1){
 			return false;
 		}
 
-		boolean side2 = blocksRad(pos.add(-1, 1, 0)) || blocksRad(pos.add(-2, 1, 0)) || blocksRad(pos.add(-3, 1, 0));
+		boolean side2 = blocksRad(pos.add(-1, 1, 0));
 		if(!side2){
 			return false;
 		}
 
-		boolean side3 = blocksRad(pos.add(0, 1, 1)) || blocksRad(pos.add(0, 1, 2)) || blocksRad(pos.add(0, 1, 3));
+		boolean side3 = blocksRad(pos.add(0, 1, 1));
 		if(!side3){
 			return false;
 		}
 
-		boolean side4 = blocksRad(pos.add(0, 1, -1)) || blocksRad(pos.add(0, 1, -2)) || blocksRad(pos.add(0, 1, -3));
+		boolean side4 = blocksRad(pos.add(0, 1, -1));
 		if(!side4){
 			return false;
 		}
@@ -336,7 +336,7 @@ public class TileEntityMachineReactorSmall extends TileEntity implements ITickab
 		Block b = world.getBlockState(pos).getBlock();
 
 		if(b instanceof IRadResistantBlock)
-			return true;
+			return ((IRadResistantBlock)b).isRadResistant(world, pos);
 
 		if(b == Blocks.FLOWING_WATER || b == Blocks.WATER)
 			return true;

@@ -43,9 +43,9 @@ public class ModForgeFluids {
 	public static Fluid deuterium = new Fluid("deuterium", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/deuterium_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/deuterium_flowing"), null, Color.WHITE);
 	public static Fluid tritium = new Fluid("tritium", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/tritium_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/tritium_flowing"), null, Color.WHITE);
 
-	public static Fluid oil = new Fluid("oil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/oil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/oil_flowing"), null, Color.WHITE).setTemperature(20+273);
+	public static Fluid oil = new Fluid("oil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/oil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/oil_flowing"), null, Color.WHITE);
 	public static Fluid hotoil = new Fluid("hotoil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/hotoil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/hotoil_flowing"), null, Color.WHITE).setTemperature(350+273);
-	public static Fluid crackoil = new Fluid("crackoil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/crackoil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/crackoil_flowing"), null, Color.WHITE).setTemperature(20+273);
+	public static Fluid crackoil = new Fluid("crackoil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/crackoil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/crackoil_flowing"), null, Color.WHITE);
 	public static Fluid hotcrackoil = new Fluid("hotcrackoil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/hotcrackoil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/hotcrackoil_flowing"), null, Color.WHITE).setTemperature(350+273);
 
 	public static Fluid heavyoil = new Fluid("heavyoil", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/heavyoil_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/heavyoil_flowing"), null, Color.WHITE);
@@ -96,7 +96,7 @@ public class ModForgeFluids {
 	public static Fluid solvent = new Fluid("solvent", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/solvent_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/solvent_flowing"), null, Color.WHITE);
 	public static Fluid radiosolvent = new Fluid("radiosolvent", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/radiosolvent_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/radiosolvent_flowing"), null, Color.WHITE);
 	public static Fluid nitroglycerin = new Fluid("nitroglycerin", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/nitroglycerin_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/nitroglycerin_flowing"), null, Color.WHITE);
-
+	
 	public static Fluid liquid_osmiridium = new Fluid("liquid_osmiridium", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/liquid_osmiridium_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/liquid_osmiridium_flowing"), null, Color.WHITE).setTemperature(573);
 	public static Fluid watz = new Fluid("watz", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/watz_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/watz_flowing"), null, Color.WHITE).setDensity(2500).setViscosity(3000).setLuminosity(5).setTemperature(2773);
 	public static Fluid cryogel = new Fluid("cryogel", new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/cryogel_still"), new ResourceLocation(RefStrings.MODID, "blocks/forgefluid/cryogel_flowing"), null, Color.WHITE).setTemperature(50);

@@ -1156,7 +1156,8 @@ public class ModEventHandlerClient {
 			JetpackHandler.clientTick(e);
 		}
 	}
-	
+
+	//Sus
 	@SubscribeEvent
 	public void onArmorRenderEvent(RenderPlayerEvent.Pre event){
 		EntityPlayer player = event.getEntityPlayer();
@@ -1749,7 +1750,7 @@ public class ModEventHandlerClient {
 	public void preRenderPlayer(RenderPlayerEvent.Pre evt) {
 		PotionEffect invis = evt.getEntityPlayer().getActivePotionEffect(MobEffects.INVISIBILITY);
 
-		if(invis != null && invis.getAmplifier() > 0){
+		if(invis != null && invis.getAmplifier() >= 0){
 			evt.setCanceled(true);
 			return;
 		}
