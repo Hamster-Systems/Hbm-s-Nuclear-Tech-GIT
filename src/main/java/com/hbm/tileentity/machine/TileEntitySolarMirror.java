@@ -19,7 +19,7 @@ public class TileEntitySolarMirror extends TileEntityTickingBase {
 	public int tZ;
 	public boolean isOn;
 
-	public static int maxTU = 1000;
+	public static int maxTU = 500;
 	
 	@Override
 	public String getInventoryName() {
@@ -132,5 +132,4 @@ public class TileEntitySolarMirror extends TileEntityTickingBase {
 	public double getMaxRenderDistanceSquared() {
 		return 65536.0D;
 	}
-	
 }
