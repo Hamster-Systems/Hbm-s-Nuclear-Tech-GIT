@@ -55,6 +55,9 @@ public class ResourceManager {
 	public static final IModelCustom chemplant_fluidcap = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/chemplant_new_fluidcap.hmf"));
 	public static final IModelCustom chemfac = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/chemfac.obj"));
 	
+	//Mixer
+	public static final IModelCustom mixer = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/mixer.obj"));
+
 	//F6 TANKS
 	public static final IModelCustom tank = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/tank.obj"));
 	
@@ -70,7 +73,7 @@ public class ResourceManager {
 
 	//UU
 	public static final IModelCustom uu_creator = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/uu_creator.obj"));
-
+	
 	//FENSU
 	public static final IModelCustom fensu = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/fensu.obj"));
 
@@ -80,7 +83,7 @@ public class ResourceManager {
 	public static final IModelCustom turret_tau = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turrets/freons/turret_tau.obj"));
 	public static final IModelCustom turret_mg = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turrets/freons/turret_mg.obj"));
 	public static final IModelCustom turret_rocket_launcher = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turrets/freons/turret_rocket_launcher.obj"));
-
+	
 
 	//Turrets
 	public static final IModelCustom turret_spitfire_base = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turret_spitfire_base.obj"));
@@ -92,7 +95,6 @@ public class ResourceManager {
 	public static final IModelCustom turret_cheapo_base = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turret_cheapo_base.obj"));
 	public static final IModelCustom turret_cheapo_rotor = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turret_cheapo_rotor.obj"));
 
-	
 	public static final IModelCustom turret_spitfire_gun = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/turret_spitfire_gun.obj"));
 	public static final IModelCustom turret_cwis_head = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/cwis_head.obj"));
 	public static final IModelCustom turret_cwis_gun = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/cwis_gun.obj"));
@@ -226,23 +228,23 @@ public class ResourceManager {
 	
 	//Cables
 	public static final IModelCustom cable_neo = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/cable_neo.obj"));
-	
+
 	//Big Cables
 	public static final IModelCustom pylon_large = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/network/pylon_large.obj"));
 	public static final IModelCustom substation = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/network/substation.obj"));
-	
+
 	//Pipe
 	public static final IModelCustom pipe_neo = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/blocks/pipe_neo.obj"));
-	
+
 	//Laser Miner
 	public static final IModelCustom mining_laser = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/mining_laser.obj"));
+
+	//Excavator
+	public static final IModelCustom excavator = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/excavator.obj"));
 
 	//Crystallizer
 	public static final IModelCustom crystallizer = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/crystallizer.obj"));
 
-	//Excavator
-	public static final ResourceLocation excavator_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/excavator.png");
-	
 	//Cyclotron
 	public static final IModelCustom cyclotron = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/cyclotron.obj"));
 
@@ -252,10 +254,10 @@ public class ResourceManager {
 
 	//Waste Drum
 	public static final IModelCustom waste_drum = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/machines/drum.obj"));
-
+	
 	//Deuterium Tower
 	public static final IModelCustom deuterium_tower = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/machine_deuterium_tower.obj"));
-
+	
 	//Vault Door
 	public static final IModelCustom vault_cog = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/vault_cog.obj"));
 	public static final IModelCustom vault_frame = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/vault_frame.obj"));
@@ -312,17 +314,16 @@ public class ResourceManager {
 	public static final IModelCustom cracking_tower = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/machines/cracking_tower.obj"));
 
 	//Flare Stack
-	// public static final IModelCustom oilflare = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/oilFlare.obj"));
 	public static final IModelCustom oilflare = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/machines/flare_stack.obj"));
 
 	//Tank
 	public static final IModelCustom fluidtank = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/fluidtank.obj"));
 	public static final IModelCustom bat9000 = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/bat9000.obj"));
 	public static final IModelCustom orbus = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/orbus.obj"));
-	
+
 	//Turbofan
 	public static final IModelCustom turbofan = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/turbofan.obj"));
-	
+
 	//Large Turbine
 	public static final IModelCustom turbine = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/turbine.obj"));
 	public static final IModelCustom chungus = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/chungus.obj"));
@@ -499,9 +500,9 @@ public class ResourceManager {
 	public static final ResourceLocation iter_torus_chlorophyte = new ResourceLocation(RefStrings.MODID, "textures/models/iter/torus_chlorophyte.png");
 	public static final ResourceLocation iter_torus_vaporwave = new ResourceLocation(RefStrings.MODID, "textures/models/iter/torus_vaporwave.png");
 
-		//UU
-		public static final ResourceLocation uu_creator_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/uu_creator.png");
-
+	//UU
+	public static final ResourceLocation uu_creator_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/uu_creator.png");
+	
 	//FENSU
 	public static final ResourceLocation[] fensu_tex = new ResourceLocation[] { 
 		new ResourceLocation(RefStrings.MODID, "textures/models/machines/fensus/fensu_white.png"),
@@ -553,7 +554,7 @@ public class ResourceManager {
 	public static final ResourceLocation turret_tau_tex = new ResourceLocation(RefStrings.MODID, "textures/models/turrets/freons/turret_tau.png");
 	public static final ResourceLocation turret_mg_tex = new ResourceLocation(RefStrings.MODID, "textures/models/turrets/freons/turret_mg.png");
 	public static final ResourceLocation turret_rocket_launcher_tex = new ResourceLocation(RefStrings.MODID, "textures/models/turrets/freons/turret_rocket_launcher.png");
-
+	
 	//Old turrets
 	public static final ResourceLocation turret_ciws_base_tex = new ResourceLocation(RefStrings.MODID, "textures/models/cwis_base.png");
 	public static final ResourceLocation turret_ciws_rotor_tex = new ResourceLocation(RefStrings.MODID, "textures/models/cwis_rotor.png");
@@ -609,7 +610,6 @@ public class ResourceManager {
 	public static final ResourceLocation cracking_tower_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/cracking_tower.png");
 	
 	//Flare Stack
-	// public static final ResourceLocation oilflare_tex = new ResourceLocation(RefStrings.MODID, "textures/models/oilFlareTexture.png");
 	public static final ResourceLocation oilflare_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/flare_stack.png");
 
 	//Tank
@@ -620,7 +620,7 @@ public class ResourceManager {
 	
 	//Cable
 	public static final ResourceLocation cable_neo_tex = new ResourceLocation(RefStrings.MODID, "textures/blocks/cable_neo.png");
-	
+
 	//Large Cable
 	public static final ResourceLocation pylon_large_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/pylon_large.png");
 	public static final ResourceLocation substation_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/substation.png");
@@ -655,9 +655,9 @@ public class ResourceManager {
 	public static final ResourceLocation heater_oven_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/heating_oven.png");
 	public static final ResourceLocation heater_oilburner_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/oilburner.png");
 	public static final ResourceLocation heater_radiothermal_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/radiothermal.png");
+	public static final ResourceLocation heat_boiler_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/boiler.png");
 	public static final ResourceLocation heater_electric_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/electric_heater.png");
 	public static final ResourceLocation heater_heatex_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/heater_heatex.png");
-	public static final ResourceLocation heat_boiler_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/boiler.png");
 	public static final ResourceLocation furnace_iron_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/furnace_iron.png");
 	public static final ResourceLocation furnace_steel_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/furnace_steel.png");
 	//Selenium Engine
@@ -685,8 +685,12 @@ public class ResourceManager {
     public static final ResourceLocation chemplant_piston_tex = new ResourceLocation(RefStrings.MODID, "textures/models/chemplant_piston_new.png");
     public static final ResourceLocation chemplant_fluid_tex = new ResourceLocation(RefStrings.MODID, "textures/models/lavabase_small.png");
 	public static final ResourceLocation chemfac_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/chemfac.png");
-    
-    //F6 TANKS
+
+	//Mixer
+	public static final ResourceLocation mixer_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/mixer.png");
+	public static final ResourceLocation mixer_uu_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/mixer_uu.png");
+
+	//F6 TANKS
     public static final ResourceLocation uf6_tex = new ResourceLocation(RefStrings.MODID, "textures/models/UF6Tank.png");
     public static final ResourceLocation puf6_tex = new ResourceLocation(RefStrings.MODID, "textures/models/PUF6Tank.png");
 
@@ -708,13 +712,13 @@ public class ResourceManager {
 	public static final ResourceLocation mining_laser_pivot_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/mining_laser_pivot.png");
 	public static final ResourceLocation mining_laser_laser_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/mining_laser_laser.png");
 
+	//Excavator
+	public static final ResourceLocation excavator_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/excavator.png");
+	
 	//Crystallizer
 	public static final ResourceLocation crystallizer_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer.png");
 	public static final ResourceLocation crystallizer_spinner_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer_spinner.png");
 	public static final ResourceLocation crystallizer_window_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/crystallizer_window.png");
-
-	//Excavator
-	public static final IModelCustom excavator = new HFRWavefrontObject(new ResourceLocation(RefStrings.MODID, "models/machines/excavator.obj"));
 
 	//Cyclotron
 	public static final ResourceLocation cyclotron_tex = new ResourceLocation(RefStrings.MODID, "textures/models/machines/cyclotron.png");
@@ -1354,7 +1358,7 @@ public class ResourceManager {
 	public static ResourceLocation tau_beam_tex = new ResourceLocation(RefStrings.MODID, "textures/misc/tau_beam.png");
 	public static ResourceLocation tau_lightning = new ResourceLocation(RefStrings.MODID, "textures/misc/tau_lightning.png");
 	public static ResourceLocation gluontau_hud = new ResourceLocation(RefStrings.MODID, "textures/misc/gluontau_hud.png");
-
+	
 	//Revolvers
 	public static final ResourceLocation ff_gold = new ResourceLocation(RefStrings.MODID, "textures/models/weapons/ff/gold.png");
 	public static final ResourceLocation ff_gun_bright = new ResourceLocation(RefStrings.MODID, "textures/models/weapons/ff/gun_bright.png");
@@ -1365,7 +1369,6 @@ public class ResourceManager {
 	public static final ResourceLocation ff_schrabidium = new ResourceLocation(RefStrings.MODID, "textures/models/weapons/ff/schrabidium.png");
 	public static final ResourceLocation ff_wood = new ResourceLocation(RefStrings.MODID, "textures/models/weapons/ff/wood.png");
 	public static final ResourceLocation ff_wood_red = new ResourceLocation(RefStrings.MODID, "textures/models/weapons/ff/wood_red.png");
-	
 	
 	public static ResourceLocation mflash = new ResourceLocation(RefStrings.MODID, "textures/misc/mflash_4.png");
 	public static ResourceLocation beam_generic = new ResourceLocation(RefStrings.MODID, "textures/misc/beam_generic.png");

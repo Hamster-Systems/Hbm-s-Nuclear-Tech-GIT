@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityMachineUUCreator extends TileEntityMachineBase implements IEnergyUser, IFluidHandler, ITickable, ITankPacketAcceptor {
-
+	
 	public int[] log = new int[20];
 	public static final long rfPerMbOfUU = 1_000_000L;
 	public FluidTank tank;
@@ -57,7 +57,8 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 			int loggedProducedMB = 0;
 			if(isOn){
 				if(power >= rfPerMbOfUU && this.tank.getFluidAmount() < this.tank.getCapacity()){
-					int producedUUmB = (int)(power / rfPerMbOfUU);
+					int producedUUmB = (int)Math.min(power / rfPerMbOfUU, this.tank.getCapacity()-this.tank.getFluidAmount());
+					
 					if(producedUUmB > 0){
 						producedUUmB = tank.fill(new FluidStack(ModForgeFluids.uu_matter, producedUUmB), true);
 						power -= producedUUmB * rfPerMbOfUU;
@@ -66,7 +67,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 					}
 				}
 			}
-
+			
 			for(int i = 1; i < this.log.length; i++) {
 				this.log[i - 1] = this.log[i];
 			}
@@ -109,13 +110,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 		double powerScaled = (double)power / (double)maxPower;
 		return (int)(i * powerScaled);
 	}
-
-	public int getFluidScaled(int i) {
-		if(tank.getFluidAmount() == 0)
-			return 0;
-		return (int)( (i * Math.log(tank.getFluidAmount())) / Math.log(tank.getCapacity()) );
-	}
-
+	
 	private void updateConnections() {
 		this.trySubscribe(world, pos.add(0, 3, 0), ForgeDirection.UP);
 		this.trySubscribe(world, pos.add(2, 3, 0), ForgeDirection.UP);
@@ -132,21 +127,21 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 
 	private void fillFluidInit(FluidTank tank) {
 		boolean update =  false;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(2, 3, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(-2, 3, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, 2), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, -2), 2_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(2, 3, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(-2, 3, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, 2), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, 3, -2), 1_000_000_000) || update;
 
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(2, -1, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(-2, -1, 0), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, 2), 2_000_000_000) || update;
-		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, -2), 2_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(2, -1, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(-2, -1, 0), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, 2), 1_000_000_000) || update;
+		update = FFUtils.fillFluid(this, tank, world, pos.add(0, -1, -2), 1_000_000_000) || update;
 		if(update)
 			markDirty();
 	}
-
+	
 	@Override
 	public AxisAlignedBB getRenderBoundingBox() {
 		return new AxisAlignedBB(
@@ -158,7 +153,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 			pos.getZ() + 4
 		);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public double getMaxRenderDistanceSquared() {
@@ -168,6 +163,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
+		this.isOn = nbt.getBoolean("isOn");
 		this.power = nbt.getLong("power");
 		this.tank.readFromNBT(nbt.getCompoundTag("tank"));
 	}
@@ -175,6 +171,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
+		nbt.setBoolean("isOn", isOn);
 		nbt.setLong("power", power);
 		nbt.setTag("tank", this.tank.writeToNBT(new NBTTagCompound()));
 		return nbt;
@@ -222,7 +219,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 		}
 		return null;
 	}
-
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY){
@@ -230,7 +227,7 @@ public class TileEntityMachineUUCreator extends TileEntityMachineBase implements
 		}
 		return super.hasCapability(capability, facing);
 	}
-
+	
 	//
 	@Override
 	public long getPower() {

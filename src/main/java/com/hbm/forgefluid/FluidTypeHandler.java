@@ -33,11 +33,11 @@ public class FluidTypeHandler {
 		return containsTrait(f, FluidTrait.AMAT);
 	}
 	
-	public static boolean isCorrosive(Fluid f){
+	public static boolean isCorrosivePlastic(Fluid f){
 		return containsTrait(f, FluidTrait.CORROSIVE) || containsTrait(f, FluidTrait.CORROSIVE_2);
 	}
 	
-	public static boolean isCorrosive2(Fluid f){
+	public static boolean isCorrosiveIron(Fluid f){
 		return containsTrait(f, FluidTrait.CORROSIVE_2);
 	}
 	
@@ -103,6 +103,11 @@ public class FluidTypeHandler {
 		
 		fluidProperties.put(ModForgeFluids.biogas.getName(), new FluidProperties(1, 4, 1, EnumSymbol.NONE));
 		fluidProperties.put(ModForgeFluids.biofuel.getName(), new FluidProperties(1, 2, 0, EnumSymbol.NONE));
+
+		fluidProperties.put(ModForgeFluids.ethanol.getName(), new FluidProperties(2, 3, 1, EnumSymbol.NONE));
+		fluidProperties.put(ModForgeFluids.fishoil.getName(), new FluidProperties(0, 1, 0, EnumSymbol.NONE));
+		fluidProperties.put(ModForgeFluids.sunfloweroil.getName(), new FluidProperties(0, 1, 0, EnumSymbol.NONE));
+		fluidProperties.put(ModForgeFluids.colloid.getName(), new FluidProperties(0, 0, 0, EnumSymbol.NONE));
 		
 		fluidProperties.put(ModForgeFluids.nitan.getName(), new FluidProperties(2, 4, 1, EnumSymbol.NONE));
 		
