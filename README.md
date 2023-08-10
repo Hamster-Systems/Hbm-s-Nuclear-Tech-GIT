@@ -8,7 +8,7 @@ which is forked from the port made by [Drillgon200](https://github.com/Drillgon2
 which is ported from the original mod made by [HBMTheBobcat](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT).
 
 
-The latest version can be found on [Curse](https://www.curseforge.com/minecraft/mc-mods/hbms-nuclear-tech-hamster-reloaded) or under the [Releases page](https://github.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT/releases).
+The latest version can be found on [Curse](https://www.curseforge.com/minecraft/mc-mods/hbms-nuclear-tech-hamster-reloaded) or under the [Releases page](https://github.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT/releases) or on [Modrinth](https://modrinth.com/mod/hbms-nuclear-tech-hamster-reloaded).
 
 The licence for this project can be found in the Licence.MD File
 
