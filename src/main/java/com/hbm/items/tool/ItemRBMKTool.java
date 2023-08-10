@@ -72,6 +72,8 @@ public class ItemRBMKTool extends Item {
 				int tz = stack.getTagCompound().getInteger("posZ");
 				console.setTarget(tx, ty, tz);
 				player.sendMessage(new TextComponentTranslation(this.getUnlocalizedName() + ".set").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+				console.setupDisplays();
+				console.markDirty();
 			}
 			
 			return EnumActionResult.SUCCESS;

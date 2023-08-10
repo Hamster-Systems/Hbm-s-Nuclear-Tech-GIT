@@ -313,7 +313,10 @@ public abstract class TileEntityTurretBaseNT extends TileEntityMachineBase imple
 	}
 	
 	public void spawnBullet(BulletConfiguration bullet) {
-		
+		spawnBullet(bullet, 0);
+	}
+
+	public void spawnBullet(BulletConfiguration bullet, float overrideDamage) {
 		Vec3 pos = new Vec3(this.getTurretPos());
 		Vec3 vec = Vec3.createVectorHelper(this.getBarrelLength(), 0, 0);
 		vec.rotateAroundZ((float) -this.rotationPitch);
