@@ -9,7 +9,6 @@ import com.hbm.inventory.control_panel.GuiControlEdit;
 import com.hbm.inventory.gui.*;
 import com.hbm.items.ModItems;
 import com.hbm.tileentity.IGUIProvider;
-
 import com.hbm.tileentity.bomb.TileEntityBombMulti;
 import com.hbm.tileentity.bomb.TileEntityCompactLauncher;
 import com.hbm.tileentity.bomb.TileEntityLaunchPad;
@@ -27,7 +26,6 @@ import com.hbm.tileentity.bomb.TileEntityNukePrototype;
 import com.hbm.tileentity.bomb.TileEntityNukeSolinium;
 import com.hbm.tileentity.bomb.TileEntityNukeTsar;
 import com.hbm.tileentity.bomb.TileEntityRailgun;
-
 import com.hbm.tileentity.machine.TileEntityAMSBase;
 import com.hbm.tileentity.machine.TileEntityAMSEmitter;
 import com.hbm.tileentity.machine.TileEntityAMSLimiter;
@@ -44,8 +42,8 @@ import com.hbm.tileentity.machine.TileEntityCrateIron;
 import com.hbm.tileentity.machine.TileEntityCrateSteel;
 import com.hbm.tileentity.machine.TileEntityCrateTungsten;
 import com.hbm.tileentity.machine.TileEntityCrateDesh;
-import com.hbm.tileentity.machine.TileEntityDiFurnaceRTG;
 import com.hbm.tileentity.machine.TileEntityDiFurnace;
+import com.hbm.tileentity.machine.TileEntityDiFurnaceRTG;
 import com.hbm.tileentity.machine.TileEntityFWatzCore;
 import com.hbm.tileentity.machine.TileEntityForceField;
 import com.hbm.tileentity.machine.TileEntityHadron;
@@ -67,8 +65,8 @@ import com.hbm.tileentity.machine.TileEntityMachineDiesel;
 import com.hbm.tileentity.machine.TileEntityMachineEPress;
 import com.hbm.tileentity.machine.TileEntityMachineElectricFurnace;
 import com.hbm.tileentity.machine.TileEntityMachineFluidTank;
-import com.hbm.tileentity.machine.TileEntityMachineUUCreator;
 import com.hbm.tileentity.machine.TileEntityMachineGasCent;
+import com.hbm.tileentity.machine.TileEntityMachineUUCreator;
 import com.hbm.tileentity.machine.oil.*;
 import com.hbm.tileentity.machine.TileEntityMachineGenerator;
 import com.hbm.tileentity.machine.TileEntityMachineIGenerator;
@@ -117,7 +115,6 @@ import com.hbm.tileentity.machine.rbmk.TileEntityRBMKOutgasser;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKRod;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKStorage;
 import com.hbm.tileentity.machine.rbmk.TileEntityRBMKHeater;
-
 import com.hbm.tileentity.turret.TileEntityTurretChekhov;
 import com.hbm.tileentity.turret.TileEntityTurretFriendly;
 import com.hbm.tileentity.turret.TileEntityTurretFritz;
@@ -172,7 +169,7 @@ public class GuiHandler implements IGuiHandler {
 				return new ContainerDiFurnace(player.inventory, (TileEntityDiFurnace) entity);
 			}
 			return null;
-			case ModBlocks.guiID_rtg_difurnace: 
+		case ModBlocks.guiID_rtg_difurnace: 
 			if(entity instanceof TileEntityDiFurnaceRTG) {
 				return new ContainerDiFurnaceRTG(player.inventory, (TileEntityDiFurnaceRTG) entity);
 			}
@@ -395,11 +392,6 @@ public class GuiHandler implements IGuiHandler {
 		case ModBlocks.guiID_machine_fracking_tower:
 			if(entity instanceof TileEntityMachineFrackingTower) {
 				return new ContainerMachineFrackingTower(player.inventory, (TileEntityMachineFrackingTower) entity);
-			}
-			return null;
-		case ModBlocks.guiID_machine_flare:
-			if(entity instanceof TileEntityMachineGasFlare) {
-				return new ContainerMachineGasFlare(player.inventory, (TileEntityMachineGasFlare) entity);
 			}
 			return null;
 		case ModBlocks.guiID_machine_drill:
@@ -795,7 +787,7 @@ public class GuiHandler implements IGuiHandler {
 			if(entity instanceof TileEntityDiFurnace) {
 				return new GUITestDiFurnace(player.inventory, (TileEntityDiFurnace) entity);
 			}
-		return null;
+			return null;
 		case ModBlocks.guiID_rtg_difurnace:
 			if(entity instanceof TileEntityDiFurnaceRTG) {
 				return new GUIDiFurnaceRTG(player.inventory, (TileEntityDiFurnaceRTG) entity);
@@ -1019,11 +1011,6 @@ public class GuiHandler implements IGuiHandler {
 		case ModBlocks.guiID_machine_fracking_tower:
 			if (entity instanceof TileEntityMachineFrackingTower) {
 				return new GUIMachineFrackingTower(player.inventory, (TileEntityMachineFrackingTower) entity);
-			}
-			return null;
-		case ModBlocks.guiID_machine_flare:
-			if(entity instanceof TileEntityMachineGasFlare) {
-				return new GUIMachineGasFlare(player.inventory, (TileEntityMachineGasFlare) entity);
 			}
 			return null;
 		case ModBlocks.guiID_machine_drill:
