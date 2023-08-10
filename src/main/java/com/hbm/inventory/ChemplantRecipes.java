@@ -278,6 +278,7 @@ public class ChemplantRecipes {
 		SULFURIC_ACID,
 		NITRIC_ACID,
 		SOLVENT,
+		RADIOSOLVENT,
 		CIRCUIT_4,
 		CIRCUIT_5,
 		POLYMER,
