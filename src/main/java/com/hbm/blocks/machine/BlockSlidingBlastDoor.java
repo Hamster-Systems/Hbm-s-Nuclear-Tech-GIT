@@ -3,10 +3,10 @@ package com.hbm.blocks.machine;
 import java.util.List;
 
 import com.hbm.handler.RadiationSystemNT;
+import com.hbm.interfaces.IDoor;
 import com.hbm.interfaces.IRadResistantBlock;
 import com.hbm.blocks.BlockDummyable;
 import com.hbm.blocks.ModBlocks;
-import com.hbm.interfaces.IDoor;
 import com.hbm.interfaces.IKeypadHandler;
 import com.hbm.lib.ForgeDirection;
 import com.hbm.tileentity.TileEntitySlidingBlastDoorKeypad;
@@ -175,12 +175,14 @@ public class BlockSlidingBlastDoor extends BlockDummyable implements IRadResista
 
 	@Override
 	public boolean isRadResistant(World worldIn, BlockPos blockPos){
-		// Door should be rad resistant only when closed
+
 		if (worldIn != null)
 		{
-			TileEntitySlidingBlastDoor entity = (TileEntitySlidingBlastDoor) worldIn.getTileEntity(blockPos);
-			if(entity != null) {
-				return entity.state == IDoor.DoorState.CLOSED;
+			TileEntity entity = worldIn.getTileEntity(blockPos);
+			if (entity instanceof IDoor)
+			{
+				// Doors should be rad resistant only when closed
+				return ((IDoor)entity).getState() == IDoor.DoorState.CLOSED;
 			}
 		}
 
