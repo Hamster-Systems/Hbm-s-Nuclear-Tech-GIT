@@ -6,7 +6,6 @@ import com.hbm.forgefluid.FFUtils;
 import com.hbm.forgefluid.ModForgeFluids;
 import com.hbm.interfaces.ITankPacketAcceptor;
 import com.hbm.inventory.HeatRecipes;
-import com.hbm.inventory.MachineRecipes;
 import com.hbm.packet.AuxGaugePacket;
 import com.hbm.packet.FluidTankPacket;
 import com.hbm.packet.PacketDispatcher;
@@ -175,7 +174,6 @@ public class TileEntityMachineBoiler extends TileEntityMachineBase implements IT
 					if(tanks[0].getFluidAmount() >= ((Integer) outs[2]).intValue()*5 && tanks[1].getFluidAmount() + ((Integer) outs[1]).intValue()*5 <= tanks[1].getCapacity()) {
 						tanks[0].drain(((Integer) outs[2])*5, true);
 						tanks[1].fill(new FluidStack((Fluid) outs[0], ((Integer) outs[1]*5)), true);
-						
 						needsUpdate = true;
 						if (i == 0)
 							heat -= 25;

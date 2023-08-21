@@ -837,7 +837,7 @@ public class ResourceManager {
 	//Doors
 	public static final ResourceLocation transition_seal_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/transition_seal.png");
 	public static final ResourceLocation water_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/water_door.png");
-	public static final ResourceLocation large_vehicle_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/large_vehicle_door.png");
+public static final ResourceLocation large_vehicle_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/large_vehicle_door.png");
 	public static final ResourceLocation qe_containment_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/qe_containment.png");
 	public static final ResourceLocation qe_containment_decal = new ResourceLocation(RefStrings.MODID, "textures/models/doors/qe_containment_decal.png");
 	public static final ResourceLocation qe_sliding_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/qe_sliding_door.png");
@@ -846,7 +846,8 @@ public class ResourceManager {
 	public static final ResourceLocation round_airlock_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/round_airlock_door.png");
 	public static final ResourceLocation secure_access_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/secure_access_door.png");
 	public static final ResourceLocation sliding_seal_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/sliding_seal_door.png");
-	
+	public static final ResourceLocation sliding_gate_door_tex = new ResourceLocation(RefStrings.MODID, "textures/models/doors/sliding_gate_door.png");
+
 	//Silo hatch
 	public static final ResourceLocation hatch_tex = new ResourceLocation(RefStrings.MODID, "textures/models/hatchtexture.png");
 	

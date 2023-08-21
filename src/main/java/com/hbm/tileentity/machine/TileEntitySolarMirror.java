@@ -37,6 +37,7 @@ public class TileEntitySolarMirror extends TileEntityTickingBase {
 				isOn = false;
 				return;
 			}
+
 			int sunHeat = (int)(maxTU * getBrightness(world));
 
 			if(sunHeat <= 0 || !world.canSeeSky(pos.up())){

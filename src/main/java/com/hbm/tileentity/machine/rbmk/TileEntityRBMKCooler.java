@@ -183,7 +183,7 @@ public class TileEntityRBMKCooler extends TileEntityRBMKBase implements IFluidHa
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing){
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing){
 		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)

@@ -36,9 +36,6 @@ public class TileEntityFurnaceSteel extends TileEntityMachineBase implements IGU
 	public int heat;
 	public static final int maxHeat = 100_000;
 	public static final double diffusion = 0.05D;
-	private static final int[] slots_top = new int[] {1};
-	private static final int[] slots_bottom = new int[] {2, 0};
-	private static final int[] slots_side = new int[] {0};
 	private ItemStack[] lastItems = new ItemStack[3];
 	
 	public boolean wasOn = false;
@@ -121,11 +118,10 @@ public class TileEntityFurnaceSteel extends TileEntityMachineBase implements IGU
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + 0.5 - dir.offsetX * 1.125 - rot.offsetX * 0.75, pos.getY() + 2.625, pos.getZ() + 0.5 - dir.offsetZ * 1.125 - rot.offsetZ * 0.75, 0.0, 0.05, 0.0);
 				
 				if(world.rand.nextInt(20) == 0)
-				world.spawnParticle(EnumParticleTypes.CLOUD, pos.getX() + 0.5 + dir.offsetX * 0.75, pos.getY() + 2, pos.getZ() + 0.5 + dir.offsetZ * 0.75, 0.0, 0.05, 0.0);
-
+					world.spawnParticle(EnumParticleTypes.CLOUD, pos.getX() + 0.5 + dir.offsetX * 0.75, pos.getY() + 2, pos.getZ() + 0.5 + dir.offsetZ * 0.75, 0.0, 0.05, 0.0);
 
 				if(world.rand.nextInt(15) == 0)
-				world.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + 0.5 + dir.offsetX * 1.5 + rot.offsetX * (world.rand.nextDouble() - 0.5), pos.getY() + 0.75, pos.getZ() + 0.5 + dir.offsetZ * 1.5 + rot.offsetZ * (world.rand.nextDouble() - 0.5), dir.offsetX * 0.5D, 0.05, dir.offsetZ * 0.5D);
+					world.spawnParticle(EnumParticleTypes.LAVA, pos.getX() + 0.5 + dir.offsetX * 1.5 + rot.offsetX * (world.rand.nextDouble() - 0.5), pos.getY() + 0.75, pos.getZ() + 0.5 + dir.offsetZ * 1.5 + rot.offsetZ * (world.rand.nextDouble() - 0.5), dir.offsetX * 0.5D, 0.05, dir.offsetZ * 0.5D);
 
 			}
 		}
@@ -249,8 +245,7 @@ public class TileEntityFurnaceSteel extends TileEntityMachineBase implements IGU
 	
 	@Override
 	public int[] getAccessibleSlotsFromSide(EnumFacing e) {
-		int i = e.ordinal();
-		return i == 0 ? slots_bottom : (i == 1 ? slots_top : slots_side);
+		return new int[]{ 0, 1, 2, 3, 4, 5};
 	}
 	
 

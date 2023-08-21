@@ -30,7 +30,7 @@ public class TileEntityDeuteriumTower extends TileEntityDeuteriumExtractor {
 			this.trySubscribe(world, pos.getPos(), pos.getDir());
 		}
 	}
-
+	
 	@Override
 	public void fillFluidInit(FluidTank tank) {
 
@@ -39,22 +39,22 @@ public class TileEntityDeuteriumTower extends TileEntityDeuteriumExtractor {
 		}
 	}
 
-
+	
 	private DirPos[] getConPos() {
-
+		
 		ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - BlockDummyable.offset);
 		ForgeDirection rot = dir.getRotation(ForgeDirection.DOWN);
 
 		return new DirPos[] {
 				new DirPos(pos.add(-dir.offsetX * 2, 0, -dir.offsetZ * 2), dir.getOpposite()),
 				new DirPos(pos.add(-dir.offsetX * 2 + rot.offsetX, 0, -dir.offsetZ * 2 + rot.offsetZ), dir.getOpposite()),
-
+				
 				new DirPos(pos.add(dir.offsetX, 0, dir.offsetZ), dir),
 				new DirPos(pos.add(dir.offsetX + rot.offsetX, 0, dir.offsetZ  + rot.offsetZ), dir),
-
+				
 				new DirPos(pos.add(-rot.offsetX, 0, -rot.offsetZ), rot.getOpposite()),
 				new DirPos(pos.add(-dir.offsetX - rot.offsetX, 0, -dir.offsetZ - rot.offsetZ), rot.getOpposite()),
-
+				
 				new DirPos(pos.add(rot.offsetX * 2, 0, rot.offsetZ * 2), rot),
 				new DirPos(pos.add(dir.offsetX + rot.offsetX * 2, 0, -dir.offsetZ + rot.offsetZ * 2), rot)
 		};

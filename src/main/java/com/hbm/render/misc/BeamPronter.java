@@ -55,10 +55,10 @@ public class BeamPronter {
 
         
 		if(beam == EnumBeamType.SOLID) {
-			GlStateManager.disableCull();
+			GlStateManager.depthMask(false);
 			GlStateManager.enableBlend();
-			//GlStateManager.depthMask(false);
 			GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE);
+			GlStateManager.disableCull();
 		}
         
 		Tessellator tessellator = Tessellator.instance;
@@ -82,7 +82,7 @@ public class BeamPronter {
 			double pX = unit.xCoord * segLength * i;
 			double pY = unit.yCoord * segLength * i;
 			double pZ = unit.zCoord * segLength * i;
-
+			
 			if(wave != EnumWaveType.STRAIGHT) {
 				Vec3 spinner = Vec3.createVectorHelper(spinRadius, 0, 0);
 				if(wave == EnumWaveType.SPIRAL) {
@@ -107,9 +107,13 @@ public class BeamPronter {
 				float radius = thickness / (float)layers;
 
 				for(int j = 1; j <= layers; j++) {
-					
-					float inter = (float)(j - 1) / (float)(layers - 1);
-					int color = BobMathUtil.interpolateColor(innerColor, outerColor, inter);
+					int color = 0;
+					if(layers == 1) {
+						color = outerColor;
+					} else {
+						float inter = (float)(j - 1) / (float)(layers - 1);
+						color = BobMathUtil.interpolateColor(innerColor, outerColor, inter);
+					}
 					tessellator.setColorOpaque_I(color);
 					
 					tessellator.addVertex(lastX + (radius * j), lastY, lastZ + (radius * j));
@@ -151,8 +155,8 @@ public class BeamPronter {
 		
 		if(beam == EnumBeamType.SOLID) {
 			GlStateManager.disableBlend();
+			GlStateManager.enableCull();
 			GlStateManager.depthMask(true);
-			GlStateManager.enableTexture2D();
 		}
 		
         GlStateManager.enableLighting();
@@ -163,9 +167,9 @@ public class BeamPronter {
 	}
 	
 	//Drillgon200: Yeah, I don't know what to do about fluid colors so I'm just going butcher it and try my best to use the middle pixel of the icon
-	//I figured out a way to extract the fluid colors from the texture and save them in a HashMap at loadup. This function wont be needed anymore.
+	//Alcater: I figured out a way to extract the fluid colors from the texture and save them in a HashMap at loadup. This function wont be needed anymore.
 	//public static void prontBeamWithIcon(Vec3 skeleton, EnumWaveType wave, EnumBeamType beam, TextureAtlasSprite icon, int innerColor, int start, int segments, float spinRadius, int layers, float thickness) {
-		
+
 	
 	public static void gluonBeam(Vec3 pos1, Vec3 pos2, float size){
 		//long l = System.nanoTime();
@@ -258,5 +262,4 @@ public class BeamPronter {
 		GlStateManager.enableCull();
 		GL11.glPopMatrix();
 	}
-
 }

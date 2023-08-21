@@ -1,6 +1,5 @@
 package com.hbm.tileentity.machine;
 
-
 import java.io.IOException;
 
 import com.google.gson.JsonObject;

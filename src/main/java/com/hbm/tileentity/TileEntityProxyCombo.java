@@ -18,12 +18,12 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 	boolean inventory;
 	boolean power;
 	boolean fluid;
-	
+
 	boolean heat;
 
 	public TileEntityProxyCombo() {
 	}
-	
+
 	public TileEntityProxyCombo(boolean inventory, boolean power, boolean fluid) {
 		this.inventory = inventory;
 		this.power = power;
@@ -47,7 +47,7 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 
 		return tile;
 	}
-	
+
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(tile == null) {
@@ -67,7 +67,7 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 		}
 		return super.getCapability(capability, facing);
 	}
-	
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if(tile == null) {
@@ -124,7 +124,7 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 
 		return 0;
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory = compound.getBoolean("inv");
@@ -134,7 +134,7 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 
 		super.readFromNBT(compound);
 	}
-	
+
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setBoolean("inv", inventory);
@@ -143,22 +143,22 @@ public class TileEntityProxyCombo extends TileEntityProxyBase implements IEnergy
 		compound.setBoolean("hea", heat);
 		return super.writeToNBT(compound);
 	}
-	
+
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		return writeToNBT(new NBTTagCompound());
 	}
-	
+
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
 	}
-	
+
 	@Override
 	public void handleUpdateTag(NBTTagCompound tag) {
 		this.readFromNBT(tag);
 	}
-	
+
 	@Override
 	public int getHeatStored() {
 		if (!this.heat) {

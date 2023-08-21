@@ -39,7 +39,7 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 	public static final double TU_PER_DEGREE = 3_000D; //based on 1mB of water absorbing 200 TU as well as 0.1°C from an RBMK column
 	public FluidTank[] tanks;
 	public Fluid[] tankTypes;
-
+	
 	public TileEntityRBMKHeater() {
 		super(1);
 		tanks = new FluidTank[2];
@@ -55,10 +55,10 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 	public String getName() {
 		return "container.rbmkHeater";
 	}
-
+	
 	@Override
 	public void update() {
-
+		
 		if(!world.isRemote) {
 			setFluidType();
             PacketDispatcher.wrapper.sendToAllAround(new FluidTankPacket(pos, new FluidTank[] { tanks[0], tanks[1] }), new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 50));
@@ -71,7 +71,7 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 					int heatReq = HeatRecipes.getRequiredHeat(tankTypes[0]);
 					int inputAmount = HeatRecipes.getInputAmountHot(tankTypes[0]);
 					int outputAmount = HeatRecipes.getOutputAmountHot(tankTypes[0]);
-
+					
 					int inputOps = tanks[0].getFluidAmount() / inputAmount;
 					int outputOps = (tanks[1].getCapacity() - tanks[1].getFluidAmount()) / outputAmount;
 					int tempOps = (int) Math.floor((tempRange * TU_PER_DEGREE) / heatReq);
@@ -93,7 +93,7 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 				fillFluidInit(tanks[1]);
 			}
 		}
-
+		
 		super.update();
 	}
 
@@ -129,7 +129,7 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 	public void fillFluidInit(FluidTank tank) {
 
 		fillFluid(this.pos.getX(), this.pos.getY() + rbmkHeight + 1, this.pos.getZ(), tank);
-
+		
 		if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).getBlock() == ModBlocks.rbmk_loader) {
 
 			fillFluid(this.pos.getX() + 1, this.pos.getY() - 1, this.pos.getZ(), tank);
@@ -138,7 +138,7 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 			fillFluid(this.pos.getX(), this.pos.getY() - 1, this.pos.getZ() - 1, tank);
 			fillFluid(this.pos.getX(), this.pos.getY() - 2, this.pos.getZ(), tank);
 		}
-
+		
 		if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - 2, pos.getZ())).getBlock() == ModBlocks.rbmk_loader) {
 
 			fillFluid(this.pos.getX() + 1, this.pos.getY() - 2, this.pos.getZ(), tank);
@@ -158,26 +158,26 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
 		this.writeToNBT(nbt);
 		nbt.removeTag("jumpheight");
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-
+		
 		tanks[0].readFromNBT(nbt.getCompoundTag("tanks0"));
 		tanks[1].readFromNBT(nbt.getCompoundTag("tanks1"));
 		if(nbt.hasKey("tankTypes0")) tankTypes[0] = FluidRegistry.getFluid(nbt.getString("tankTypes0"));
 		if(nbt.hasKey("tankTypes1")) tankTypes[1] = FluidRegistry.getFluid(nbt.getString("tankTypes1"));
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-
+		
 		nbt.setTag("tanks0", tanks[0].writeToNBT(new NBTTagCompound()));
 		nbt.setTag("tanks1", tanks[1].writeToNBT(new NBTTagCompound()));
 		nbt.setString("tankTypes0", tankTypes[0].getName());
 		nbt.setString("tankTypes1", tankTypes[1].getName());
-
+		
 		return nbt;
 	}
 
@@ -190,16 +190,16 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
             tanks[1].readFromNBT(tags[1]);
         }
     }
-
+	
 	@Override
 	public void onMelt(int reduce) {
-
+		
 		int count = 1 + world.rand.nextInt(2);
-
+		
 		for(int i = 0; i < count; i++) {
 			spawnDebris(DebrisType.BLANK);
 		}
-
+		
 		super.onMelt(reduce);
 	}
 
@@ -248,12 +248,12 @@ public class TileEntityRBMKHeater extends TileEntityRBMKSlottedBase implements I
         }
         return null;
 	}
-
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing){
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing){
 		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)

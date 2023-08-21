@@ -31,7 +31,6 @@ public abstract class TileEntityFireboxBase extends TileEntityMachineBase implem
 	public float prevDoorAngle = 0;
 
 	public int heatEnergy;
-    
    
 	public TileEntityFireboxBase() {
 		super(2);

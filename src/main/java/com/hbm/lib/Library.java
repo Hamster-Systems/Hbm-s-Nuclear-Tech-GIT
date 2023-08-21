@@ -31,6 +31,7 @@ import api.hbm.energy.IBatteryItem;
 import api.hbm.energy.IEnergyConnector;
 import api.hbm.energy.IEnergyConnectorBlock;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.state.IBlockState;
@@ -94,9 +95,6 @@ public class Library {
 	public static String SweatySwiggs = "5544aa30-b305-4362-b2c1-67349bb499d5";
 	public static String Drillgon = "41ebd03f-7a12-42f3-b037-0caa4d6f235b";
 	public static String Alcater = "0b399a4a-8545-45a1-be3d-ece70d7d48e9";
-
-	public static String Callum = "ca83738e-7b91-4f7b-b2cd-b868adf13d34";
-	public static String Cold = "ce11746e-af01-4020-ad0b-0f36b1758f67";
 	public static String Doctor17 = "e4ab1199-1c22-4f82-a516-c3238bc2d0d1";
 	public static String Doctor17PH = "4d0477d7-58da-41a9-a945-e93df8601c5a";
 	public static String ShimmeringBlaze = "061bc566-ec74-4307-9614-ac3a70d2ef38";
@@ -205,8 +203,17 @@ public class Library {
 	}
 
 	public static int getColorFromItemStack(ItemStack stack){
-		ResourceLocation path = new ResourceLocation(Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(stack.getItem(), stack.getMetadata()).getIconName()+".png");
-		return getColorFromResourceLocation(new ResourceLocation(path.getResourceDomain(), "textures/"+path.getResourcePath()));
+		ResourceLocation path = null;
+		ResourceLocation actualPath = null;
+		TextureAtlasSprite sprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(stack.getItem(), stack.getMetadata());
+		if(sprite != null){
+			path = new ResourceLocation(sprite.getIconName()+".png");
+			actualPath = new ResourceLocation(path.getResourceDomain(), "textures/"+path.getResourcePath());
+		} else {
+			path = new ResourceLocation(stack.getItem().getRegistryName()+".png");
+			actualPath = new ResourceLocation(path.getResourceDomain(), "textures/items/"+path.getResourcePath());
+		}
+		return getColorFromResourceLocation(actualPath);
 	}
 
 	public static int getColorFromResourceLocation(ResourceLocation r){
@@ -1041,5 +1048,4 @@ public static boolean canConnect(IBlockAccess world, BlockPos pos, ForgeDirectio
 	public static Explosion explosionDummy(World w, double x, double y, double z){
 		return new Explosion(w, null, x, y, z, 1000, false, false);
 	}
-	
 }

@@ -195,7 +195,7 @@ public class TileEntityHeatBoiler extends TileEntity implements INBTPacketReceiv
             int heatReq = HeatRecipes.getRequiredHeat(types[0]);
             int inputAmount = HeatRecipes.getInputAmountHot(types[0]);
             int outputAmount = HeatRecipes.getOutputAmountHot(types[0]);
-
+            
             int inputOps = tanks[0].getFluidAmount() / inputAmount;
             int outputOps = (tanks[1].getCapacity() - tanks[1].getFluidAmount()) / outputAmount;
             int tempOps = (int) Math.floor(this.heat / heatReq);

@@ -22,7 +22,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TileEntityHeaterRadioThermal extends TileEntityMachineBase implements IHeatSource, ITickable, IGUIProvider {
-
+    
     public int heatGen;
     public int heatEnergy;
     public static final int maxHeatEnergy = 750_000;
@@ -33,11 +33,11 @@ public class TileEntityHeaterRadioThermal extends TileEntityMachineBase implemen
 
     @Override
     public void update() {
-
+        
         if(!world.isRemote) {
-
+            
             this.heatEnergy *= 0.999;
-
+            
             this.tryPullHeat();
 
             this.heatGen = RTGUtil.updateRTGs(inventory, new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14});
@@ -60,23 +60,23 @@ public class TileEntityHeaterRadioThermal extends TileEntityMachineBase implemen
         this.heatGen = nbt.getInteger("hg");
         this.heatEnergy = nbt.getInteger("h");
     }
-
+    
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
         this.heatEnergy = nbt.getInteger("heatEnergy");
     }
-
+    
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
         nbt.setInteger("heatEnergy", heatEnergy);
         return nbt;
     }
-
+    
     protected void tryPullHeat() {
         TileEntity con = world.getTileEntity(pos.add(0, -1, 0));
-
+        
         if(con instanceof IHeatSource) {
             IHeatSource source = (IHeatSource) con;
             this.heatEnergy += source.getHeatStored() * 0.85;
@@ -93,7 +93,7 @@ public class TileEntityHeaterRadioThermal extends TileEntityMachineBase implemen
     public void useUpHeat(int heat) {
         this.heatEnergy = Math.max(0, this.heatEnergy - heat);
     }
-
+    
     AxisAlignedBB bb = null;
     @Override
     @Nonnull
@@ -105,7 +105,7 @@ public class TileEntityHeaterRadioThermal extends TileEntityMachineBase implemen
 
         return bb;
     }
-
+    
     @Override
     @SideOnly(Side.CLIENT)
     public double getMaxRenderDistanceSquared() {

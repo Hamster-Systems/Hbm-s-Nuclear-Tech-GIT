@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 public class TileEntityDeuteriumExtractor extends TileEntityLoadedBase implements ITickable, IFluidHandler, IEnergyUser, ITankPacketAcceptor, INBTPacketReceiver {
-
+	
 	public int age = 0;
 	public long power = 0;
 	public FluidTank[] tanks;
@@ -33,9 +33,9 @@ public class TileEntityDeuteriumExtractor extends TileEntityLoadedBase implement
 
 	@Override
 	public void update() {
-
+		
 		if(!world.isRemote) {
-
+			
 			updateConnections();
 
 			age++;
@@ -45,11 +45,11 @@ public class TileEntityDeuteriumExtractor extends TileEntityLoadedBase implement
 
 			if(age == 9 || age == 19)
 				fillFluidInit(tanks[1]);
-
+			
 			if(hasPower() && hasEnoughWater() && tanks[1].getCapacity() > tanks[1].getFluidAmount()) {
 				int convert = Math.min(tanks[1].getCapacity(), tanks[0].getFluidAmount()) / 50;
 				convert = Math.min(convert, tanks[1].getCapacity() - tanks[1].getFluidAmount());
-
+				
 				tanks[0].drain(convert * 50, true); //dividing first, then multiplying, will remove any rounding issues
 				tanks[1].fill(new FluidStack(ModForgeFluids.heavywater, convert), true);
 				power -= this.getMaxPower() / 20;
@@ -59,11 +59,11 @@ public class TileEntityDeuteriumExtractor extends TileEntityLoadedBase implement
 			NBTTagCompound data = new NBTTagCompound();
 			data.setLong("power", power);
 			data.setTag("tanks", FFUtils.serializeTankArray(tanks));
-
+			
 			INBTPacketReceiver.networkPack(this, data, 50);
 		}
 	}
-
+	
 	protected void updateConnections() {
 		this.updateStandardConnections(world, pos);
 	}

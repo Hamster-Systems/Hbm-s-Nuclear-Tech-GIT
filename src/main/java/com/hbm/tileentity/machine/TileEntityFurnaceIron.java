@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUIProvider, ITickable {
-
+	
 	public int maxBurnTime;
 	public int burnTime;
 	public boolean wasOn = false;
@@ -33,12 +33,12 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 	public int progress;
 	public int processingTime;
 	public static final int baseTime = 200;
-
+	
 	public ModuleBurnTime burnModule;
 
 	public TileEntityFurnaceIron() {
 		super(5);
-
+		
 		burnModule = new ModuleBurnTime()
 				.setLigniteTimeMod(1.25)
 				.setCoalTimeMod(1.25)
@@ -55,21 +55,21 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 
 	@Override
 	public void update() {
-
+		
 		if(!world.isRemote) {
-
+			
 			this.processingTime = baseTime - 15 * ItemMachineUpgrade.getSpeed(inventory.getStackInSlot(4));
-
+			
 			wasOn = false;
-
+			
 			if(burnTime <= 0) {
-
+				
 				for(int i = 1; i < 3; i++) {
 					ItemStack input = inventory.getStackInSlot(i);
 					if(input != null) {
-
+						
 						int fuel = burnModule.getBurnTime(input);
-
+						
 						if(fuel > 0) {
 							this.maxBurnTime = this.burnTime = fuel;
 							input.shrink(1);
@@ -78,37 +78,37 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 					}
 				} 
 			}
-
+			
 			if(canSmelt()) {
 				wasOn = true;
 				this.progress++;
 				this.burnTime--;
-
+				
 				if(this.progress % 15 == 0) {
 					world.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 0.5F + world.rand.nextFloat() * 0.5F);
 				}
-
+				
 				if(this.progress >= this.processingTime) {
 					ItemStack outputs = inventory.getStackInSlot(3);
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(inventory.getStackInSlot(0));
 					ItemStack copy = outputs;
-
+		
 					if(outputs == ItemStack.EMPTY) {
 						 copy  = result.copy();
 						 inventory.setStackInSlot(3, copy);
 					} else {
 						outputs.setCount(copy.getCount() + result.getCount());
 					}
-
+					
 					inventory.getStackInSlot(0).shrink(1);
-
+					
 					this.progress = 0;
 					this.markDirty();
 				}
 			} else {
 				this.progress = 0;
 			}
-
+			
 			NBTTagCompound data = new NBTTagCompound();
 			data.setInteger("maxBurnTime", this.maxBurnTime);
 			data.setInteger("burnTime", this.burnTime);
@@ -117,14 +117,14 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 			data.setBoolean("wasOn", this.wasOn);
 			this.networkPack(data, 50);
 		} else {
-
+			
 			if(this.progress > 0) {
 				ForgeDirection dir = ForgeDirection.getOrientation(this.getBlockMetadata() - 10);
 				ForgeDirection rot = dir.getRotation(ForgeDirection.UP);
-
+				
 				double offset = this.progress % 2 == 0 ? 1 : 0.5;
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + 0.5 - dir.offsetX * offset - rot.offsetX * 0.1875, pos.getY() + 2, pos.getZ() + 0.5 - dir.offsetZ * offset - rot.offsetZ * 0.1875, 0.0, 0.01, 0.0);
-
+				
 				if(this.progress % 5 == 0) {
 					world.spawnParticle(EnumParticleTypes.FLAME, pos.getX() + 0.5 + dir.offsetX * 0.25 + rot.offsetX * world.rand.nextDouble(), pos.getY() + 0.25 +world.rand.nextDouble() * 0.25, pos.getZ() + 0.5 + dir.offsetZ * 0.25 + rot.offsetZ * world.rand.nextDouble(), 0.0, 0.0, 0.0);
 				}
@@ -140,17 +140,17 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 		this.processingTime = nbt.getInteger("processingTime");
 		this.wasOn = nbt.getBoolean("wasOn");
 	}
-
+	
 	public boolean canSmelt() {
-
+		
 		if(this.burnTime <= 0) return false;
 		if(inventory.getStackInSlot(0).isEmpty()) return false;
-
+		
 		ItemStack result = FurnaceRecipes.instance().getSmeltingResult(inventory.getStackInSlot(0));
-
+		
 		if(result == null || result.isEmpty()) return false;
 		if(inventory.getStackInSlot(3).isEmpty()) return true;
-
+		
 		if(!result.isItemEqual(inventory.getStackInSlot(3))) return false;
 		if(inventory.getStackInSlot(3).getCount() < inventory.getSlotLimit(3) && inventory.getStackInSlot(3).getCount() < inventory.getStackInSlot(3).getMaxStackSize()) {
 			return true;
@@ -158,7 +158,7 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 			return inventory.getStackInSlot(3).getCount() < result.getMaxStackSize();
 		}
 	}
-
+	
 	@Override
 	public int[] getAccessibleSlotsFromSide(EnumFacing e) {
 		return new int[] { 0, 1, 2, 3 };
@@ -166,13 +166,13 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemStack) {
-
+		
 		if(i == 0)
 			return FurnaceRecipes.instance().getSmeltingResult(itemStack) != null;
-
+		
 		if(i < 3)
 			return burnModule.getBurnTime(itemStack) > 0;
-
+			
 		return false;
 	}
 
@@ -180,7 +180,7 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 	public boolean canExtractItem(int i, ItemStack itemStack, int j) {
 		return i == 3;
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
@@ -189,7 +189,7 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 		this.burnTime = nbt.getInteger("burnTime");
 		this.progress = nbt.getInteger("progress");
 	}
-
+	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
@@ -210,19 +210,19 @@ public class TileEntityFurnaceIron extends TileEntityMachineBase implements IGUI
 	public GuiScreen provideGUI(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		return new GUIFurnaceIron(player.inventory, this);
 	}
-
+	
 	AxisAlignedBB bb = null;
-
+	
 	@Override
     public AxisAlignedBB getRenderBoundingBox() {
-
+		
 		if (bb == null) {
             bb = new AxisAlignedBB(pos.getX() - 1, pos.getY(), pos.getZ() - 1, pos.getX() + 2, pos.getY() + 3, pos.getZ() + 2);
         }
 
         return bb;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public double getMaxRenderDistanceSquared() {

@@ -448,19 +448,19 @@ public class TileEntityMachineAssembler extends TileEntityMachineBase implements
 		if(inventory.getStackInSlot(slot).isEmpty())
 			return false;
 
-			for(int i = 0; i < chest.getSlots(); i++) {
-
-				ItemStack outputStack = inventory.getStackInSlot(slot).copy();
-				if(outputStack.isEmpty())
+		for(int i = 0; i < chest.getSlots(); i++) {
+			
+			ItemStack outputStack = inventory.getStackInSlot(slot).copy();
+			if(outputStack.isEmpty())
 				return false;
 
-				ItemStack chestItem = chest.getStackInSlot(i).copy();
-				if(chestItem.isEmpty() || (Library.areItemStacksCompatible(outputStack, chestItem, false) && chestItem.getCount() < chestItem.getMaxStackSize())) {
+			ItemStack chestItem = chest.getStackInSlot(i).copy();
+			if(chestItem.isEmpty() || (Library.areItemStacksCompatible(outputStack, chestItem, false) && chestItem.getCount() < chestItem.getMaxStackSize())) {
 				inventory.getStackInSlot(slot).shrink(1);
-				
+
 				outputStack.setCount(1);
 				chest.insertItem(i, outputStack, false);
-				
+
 				return true;
 			}
 		}
