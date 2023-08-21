@@ -1,5 +1,6 @@
 package com.hbm.entity.effect;
 
+//Chunkloading stuff
 import java.util.*;
 
 import com.hbm.blocks.ModBlocks;
@@ -9,10 +10,6 @@ import com.hbm.config.VersatileConfig;
 import com.hbm.interfaces.IConstantRenderer;
 import com.hbm.render.amlfrom1710.Vec3;
 import com.hbm.saveddata.AuxSavedData;
-
-//Chunkloading stuff
-import java.util.ArrayList;
-import java.util.List;
 import com.hbm.entity.logic.IChunkLoader;
 import com.hbm.main.MainRegistry;
 import com.hbm.blocks.generic.WasteLog;
@@ -329,7 +326,7 @@ public class EntityFalloutRain extends Entity implements IConstantRenderer, IChu
 				continue;
 			}
 
-			if(bblock == Blocks.BEDROCK){
+			if(bblock == Blocks.BEDROCK || bblock == ModBlocks.ore_bedrock_oil || bblock == ModBlocks.ore_bedrock_block){){
 				world.setBlockState(pos.add(0, 1, 0), ModBlocks.toxic_block.getDefaultState());
 				break;
 			}

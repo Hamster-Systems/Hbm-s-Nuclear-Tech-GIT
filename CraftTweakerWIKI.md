@@ -12,6 +12,9 @@ mods.ntm.Assembler.removeRecipe(IItemStack output);<br>
 ``mods.ntm.Assembler.removeRecipe(<hbm:machine_silex>);``
 
 
+mods.ntm.Assembler.replaceRecipe(IItemStack output, IItemStack[] inputs, int duration);<br>
+``mods.ntm.Assembler.replaceRecipe(<hbm:machine_silex>, [<minecraft:glass>, <minecraft:cobblestone>], 50);``
+
 ## Blast Furnace
 
 mods.ntm.BlastFurnace.addRecipe(IItemStack input1, IItemStack input2, IItemStack output);<br>
