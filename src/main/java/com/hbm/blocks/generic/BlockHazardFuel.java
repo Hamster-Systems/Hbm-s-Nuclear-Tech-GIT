@@ -1,21 +1,26 @@
 package com.hbm.blocks.generic;
 
-import com.hbm.blocks.BlockBase;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
-public class BlockFlammable extends BlockBase {
+public class BlockHazardFuel extends BlockHazard {
 
+	private int burntime;
 	public int encouragement;
 	public int flammability;
 	
-	public BlockFlammable(Material m, int en, int flam, String s){
+	public BlockHazardFuel(Material m, String s, int en, int flam, int burntime){
 		super(m, s);
 		this.encouragement = en;
 		this.flammability = flam;
+		this.burntime = burntime;
+	}
+
+	public int getBurnTime(){
+		return burntime;
 	}
 	
 	@Override
@@ -28,4 +33,13 @@ public class BlockFlammable extends BlockBase {
 		return encouragement;
 	}
 
+	@Override
+	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face){
+		return true;
+	}
+
+	@Override
+	public boolean isFireSource(World world, BlockPos pos, EnumFacing side){
+		return true;
+	}
 }
