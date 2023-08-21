@@ -103,10 +103,16 @@ public class Library {
 	public static String Pu_238 = "c95fdfd3-bea7-4255-a44b-d21bc3df95e3";
 
 	public static String Golem = "058b52a6-05b7-4d11-8cfa-2db665d9a521";
+
+	public static String Callum = "ca83738e-7b91-4f7b-b2cd-b868adf13d34";
+	public static String Cold = "ce11746e-af01-4020-ad0b-0f36b1758f67";
+	
 	public static Set<String> contributors = Sets.newHashSet(new String[] {
 			"06ab7c03-55ce-43f8-9d3c-2850e3c652de", //mustang_rudolf
 			"5bf069bc-5b46-4179-aafe-35c0a07dee8b", //JMF781
 			});
+	
+	
 
 
 	public static final ForgeDirection POS_X = ForgeDirection.EAST;
