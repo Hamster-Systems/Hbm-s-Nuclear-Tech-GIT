@@ -2,7 +2,19 @@
 
 This is Hamster Systems 1.12.2 custom version of the mod
 
-whitch is forked from the fork made by [Alcater](https://github.com/Alcatergit/Hbm-s-Nuclear-Tech-GIT)
+# <u> **What have we done?** </u>
+
+Some people have asked what we have changed, And have stated in **their** description of this version "Hamster Systems for... i honestly dont know..." Well heres what we have done and plan to do!
+
+**Main Changes**
+
+> Fixed alot of the code instead of it being bandaided on top of one another.
+> Added new items, blocks, tools including stuff that use to be in 1.7.10
+> Fixed alot of bugs and issues like that.
+
+#
+
+which is forked from the fork made by [Alcater](https://github.com/Alcatergit/Hbm-s-Nuclear-Tech-GIT)
 which is forked from the fork made by [TheOriginalGolem](https://github.com/TheOriginalGolem/Hbm-s-Nuclear-Tech-GIT)
 which is forked from the port made by [Drillgon200](https://github.com/Drillgon200/Hbm-s-Nuclear-Tech-GIT)
 which is ported from the original mod made by [HBMTheBobcat](https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT).
