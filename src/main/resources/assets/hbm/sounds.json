@@ -256,6 +256,7 @@
     "alarm.gambit": {"category": "record", "sounds": [{"name": "hbm:alarm/gambit", "stream": false}]},
     "alarm.soyuzed": {"category": "record", "sounds": [{"name": "hbm:alarm/soyuzed", "stream": false}]},
     "alarm.chime": {"category": "record", "sounds": [{"name": "hbm:alarm/chime", "stream": false}]},
+    "alarm.lockdown": {"category": "record", "sounds": [{"name": "hbm:alarm/lockdown", "stream": false}]},
     "block.railgunOrientation": {"category": "block", "sounds": [{"name": "hbm:block/railgunOrientation", "stream": false}]},
     "block.railgunFire": {"category": "block", "sounds": [{"name": "hbm:block/railgunFire", "stream": false}]},
     "block.railgunCharge": {"category": "block", "sounds": [{"name": "hbm:block/railgunCharge", "stream": false}]},
