@@ -3,7 +3,7 @@
     "modid": "hbm",
     "name": "Hbms Nuclear Tech - Hamster Reloaded",
     "description": "A mod that adds all kinds of nukes and other things and crazy reactors of mass destruction",
-    "version": "1.6.3",
+    "version": "1.6.4",
     "credits": "\n\nHBMMods: Orignal creator\nDrillgon200: original 1.12.2 porter\nTheOriginalGolem: 1.12.2 bug fixing porter\nAlcater: Custom 1.12.2 extended version, updating and texturing\n\nCtech Gameing: Hamstering things up\n Coldalliance: Testing and helping with development\n\nHoboy: textures and models\n\nCrowbar Collective: gluon gun sounds\n70000HP: MIRV and configs\n",
     "mcversion": "${mcversion}",
     "url": "https://github.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT",

@@ -72,7 +72,7 @@ public class RenderSlidingBlastDoor extends TileEntitySpecialRenderer<TileEntity
         boolean reverse = te.state == IDoor.DoorState.OPEN || te.state == IDoor.DoorState.CLOSING;
         AnimationWrapper w = new AnimationWrapper(startTime, ResourceManager.door0_open);
         if(reverse){
-        	w.reverse();
+			// w.reverse();
         }
         w.onEnd(new EndResult(EndType.STAY, null));
         if(te.getBlockType() == ModBlocks.sliding_blast_door){

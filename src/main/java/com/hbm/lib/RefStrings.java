@@ -3,8 +3,8 @@ package com.hbm.lib;
 public class RefStrings {
 	public static final String MODID = "hbm";
 	public static final String NAME = "Hbm's Nuclear Tech - Hamster Reloaded";
-	public static final String VERSION = "Hbms Nuclear Tech - Hamster Reloaded - 1.12.2-1.6.3";
-	public static final String CHANGELOG = "$§d-Fixed alot of bug/n-Fixed T-60 Audios/n-Added Lockdown Audios";
+	public static final String VERSION = "Hbms Nuclear Tech - Hamster Reloaded - 1.12.2-1.6.4";
+	public static final String CHANGELOG = "$§d-Added Missing Resapies/n-Added More Audio";
 	//HBM's Beta Naming Convention:
 	//V T (X)
 	//V -> next release version
