@@ -10,6 +10,10 @@ public class DataValueFloat extends DataValue {
 	public DataValueFloat(float f) {
 		num = f;
 	}
+
+	public DataValueFloat(boolean b) {
+		num = (b)? 1.0F : 0.0F;
+	}
 	
 	@Override
 	public float getNumber() {
