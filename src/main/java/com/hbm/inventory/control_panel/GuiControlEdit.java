@@ -45,8 +45,11 @@ public class GuiControlEdit extends GuiContainer {
 	public SubElementGlobalVars globalVars;
 
 	public Control currentEditControl;
-	
+	public Control prevEditControl;
+
 	public ScaledResolution res;
+
+	public boolean isEditMode = false; // when editing an existing control
 	
 	public GuiControlEdit(InventoryPlayer i, TileEntityControlPanel te) {
 		super(new ContainerControlEdit(i, te));
@@ -72,6 +75,7 @@ public class GuiControlEdit extends GuiContainer {
 		tag.setString("full_set", "");
 		PacketDispatcher.wrapper.sendToServer(new NBTControlPacket(tag, control.getPos()));
 		control.updateTransform();
+		isEditMode = false;
 	}
 	
 	@Override
@@ -99,7 +103,7 @@ public class GuiControlEdit extends GuiContainer {
 		panelResize.initGui();
 		itemConfig.initGui();
 		globalVars.initGui();
-		
+
 		subElementStack.addFirst(placement);
 		placement.enableButtons(true);
 	}
@@ -112,7 +116,7 @@ public class GuiControlEdit extends GuiContainer {
 	public <T extends GuiButton> T addButton(T buttonIn) {
 		return super.addButton(buttonIn);
 	}
-	
+
 	public int currentButtonId(){
 		return this.buttonList.size();
 	}
