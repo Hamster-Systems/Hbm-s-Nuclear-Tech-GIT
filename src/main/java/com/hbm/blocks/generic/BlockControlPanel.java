@@ -1,14 +1,12 @@
 package com.hbm.blocks.generic;
 
+import java.util.Map;
 import java.util.Random;
 
-import net.minecraft.item.ItemBlock;
-import org.lwjgl.opengl.GL11;
-
+import com.hbm.blocks.BlockControlPanelType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.interfaces.ICustomSelectionBox;
-import com.hbm.inventory.control_panel.Control;
-import com.hbm.inventory.control_panel.ControlEvent;
+import com.hbm.inventory.control_panel.*;
 import com.hbm.items.ModItems;
 import com.hbm.main.ClientProxy;
 import com.hbm.main.MainRegistry;
@@ -42,8 +40,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nonnull;
 
@@ -58,16 +55,16 @@ public class BlockControlPanel extends BlockContainer implements ICustomSelectio
 		
 		ModBlocks.ALL_BLOCKS.add(this);
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityControlPanel();
+		TileEntityControlPanel te = new TileEntityControlPanel();
+		te.panel = new ControlPanel(te, 0.25F, (float) Math.toRadians(20), 0, 0, 0.25F, 0);
+		return te;
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if(playerIn.isSneaking())
-			return false;
 		if(!worldIn.isRemote){
 			if(playerIn.getHeldItem(hand).getItem() == ModItems.screwdriver || playerIn.getHeldItem(hand).getItem() == ModItems.screwdriver_desh)
 				playerIn.openGui(MainRegistry.instance, ModBlocks.guiID_control_panel, worldIn, pos.getX(), pos.getY(), pos.getZ());
@@ -75,7 +72,9 @@ public class BlockControlPanel extends BlockContainer implements ICustomSelectio
 			TileEntityControlPanel control = (TileEntityControlPanel)worldIn.getTileEntity(pos);
 			Control ctrl = control.panel.getSelectedControl(playerIn.getPositionEyes(1), playerIn.getLook(1));
 			if(ctrl != null){
-				NBTTagCompound dat = ControlEvent.newEvent("ctrl_press").writeToNBT(new NBTTagCompound());
+				ControlEvent evt = ControlEvent.newEvent("ctrl_press");
+				evt.setVar("isSneaking", new DataValueFloat(playerIn.isSneaking()));
+				NBTTagCompound dat = evt.writeToNBT(new NBTTagCompound());
 				dat.setInteger("click_control", ctrl.panel.controls.indexOf(ctrl));
 				PacketDispatcher.wrapper.sendToServer(new NBTControlPacket(dat, pos));
 				return true;
@@ -83,7 +82,7 @@ public class BlockControlPanel extends BlockContainer implements ICustomSelectio
 		}
 		return true;
 	}
-	
+
 	@Nonnull
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
@@ -96,7 +95,7 @@ public class BlockControlPanel extends BlockContainer implements ICustomSelectio
 		}
 		return super.getBoundingBox(state, source, pos);
 	}
-	
+
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face){
 		return BlockFaceShape.UNDEFINED;
@@ -175,19 +174,19 @@ public class BlockControlPanel extends BlockContainer implements ICustomSelectio
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return state.getValue(FACING).getIndex();
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-        // if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-        // {
-        //     enumfacing = EnumFacing.NORTH;
-        // }
+//        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+//        {
+//            enumfacing = EnumFacing.NORTH;
+//        }
 
-        return this.getDefaultState().withProperty(FACING, enumfacing);
+		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
 	
 	@Override

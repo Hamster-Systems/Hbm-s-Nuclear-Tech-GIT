@@ -149,18 +149,7 @@ public class SubElementEventEditor extends SubElement {
 			currentSendPage = Math.min(numSendPages, currentSendPage + 1);
 			recalculateVisibleButtons();
 		} else if(button == done){
-			Iterator<NodeSystem> itr = gui.currentEditControl.receiveNodeMap.values().iterator();
-			while(itr.hasNext()){
-				NodeSystem sys = itr.next();
-				if(sys.outputNodes.isEmpty())
-					itr.remove();
-			}
-			itr = gui.currentEditControl.sendNodeMap.values().iterator();
-			while(itr.hasNext()){
-				NodeSystem sys = itr.next();
-				if(sys.outputNodes.isEmpty())
-					itr.remove();
-			}
+		
 			for(IControllable c : gui.linker.linked) {
 				if (!gui.currentEditControl.connectedSet.contains(c.getControlPos()))
 					gui.currentEditControl.connectedSet.add(c.getControlPos());

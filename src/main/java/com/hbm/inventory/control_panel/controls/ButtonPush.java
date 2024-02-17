@@ -3,7 +3,7 @@ package com.hbm.inventory.control_panel.controls;
 import com.hbm.inventory.control_panel.Control;
 import com.hbm.inventory.control_panel.ControlPanel;
 import com.hbm.inventory.control_panel.DataValueFloat;
-import com.hbm.main.ClientProxy;
+import com.hbm.inventory.control_panel.DataValueEnum;
 import com.hbm.main.ResourceManager;
 import com.hbm.render.amlfrom1710.IModelCustom;
 import com.hbm.render.amlfrom1710.Tessellator;
@@ -11,43 +11,48 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Vector3f;
 
 import java.util.Collections;
 import java.util.List;
 
 
-public class SwitchToggle extends Control {
+public class ButtonPush extends Control {
 
-    public SwitchToggle(String name, ControlPanel panel) {
+    public ButtonPush(String name, ControlPanel panel) {
         super(name, panel);
-        vars.put("isOn", new DataValueFloat(0));
+        vars.put("isPushed", new DataValueFloat(0));
+        vars.put("isLit", new DataValueFloat(0));
+        vars.put("color", new DataValueEnum<>(EnumDyeColor.GREEN));
     }
 
     @Override
     public ControlType getControlType() {
-        return ControlType.SWITCH;
+        return ControlType.BUTTON;
     }
 
     @Override
     public float[] getSize() {
-        return new float[] {1, 1, .62F};
+        return new float[] {1, 1, .2F};
     }
 
     @Override
     public void render() {
-        boolean isOn = getVar("isOn").getBoolean();
-
         GlStateManager.shadeModel(GL11.GL_SMOOTH);
-        Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceManager.ctrl_switch_toggle_tex);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceManager.ctrl_button_push_tex);
         Tessellator tes = Tessellator.instance;
-
         IModelCustom model = getModel();
+
+        boolean isPushed = getVar("isPushed").getBoolean();
+        boolean isLit = getVar("isLit").getBoolean();
+        float[] color = getVar("color").getEnum(EnumDyeColor.class).getColorComponentValues();
+
+        float lX = OpenGlHelper.lastBrightnessX;
+        float lY = OpenGlHelper.lastBrightnessY;
 
         tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
         tes.setTranslation(posX, 0, posY);
@@ -55,38 +60,29 @@ public class SwitchToggle extends Control {
         model.tessellatePart(tes, "base");
         tes.draw();
 
-        GlStateManager.disableTexture2D();
-        float lX = OpenGlHelper.lastBrightnessX;
-        float lY = OpenGlHelper.lastBrightnessY;
-        float onCMul = (isOn) ? 3F : .4F;
-        float offCMul = (isOn) ? .4F : 3F;
-
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (isOn)?240:lX, (isOn)?240:lY);
         tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
         tes.setTranslation(posX, 0, posY);
-        tes.setColorRGBA_F(.031F * onCMul, .17F * onCMul, .024F * onCMul, 1);
-        model.tessellatePart(tes, "lamp_on");
-        tes.draw();
-
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (!isOn)?240:lX, (!isOn)?240:lY);
-        tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
-        tes.setTranslation(posX, 0, posY);
-        tes.setColorRGBA_F(.25F * offCMul, 0.04F * offCMul, 0.04F * offCMul, 1);
-        model.tessellatePart(tes, "lamp_off");
-        tes.draw();
-
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lX, lY);
-        GlStateManager.enableTexture2D();
-
-        Matrix4f rot_mat = new Matrix4f().rotate((float) ((isOn) ? Math.toRadians(-60) : 0), new Vector3f(1, 0, 0));
-        Matrix4f.mul(new Matrix4f().translate(new Vector3f(posX, 0, posY)), rot_mat, new Matrix4f()).store(ClientProxy.AUX_GL_BUFFER);
-        ClientProxy.AUX_GL_BUFFER.rewind();
-        GlStateManager.multMatrix(ClientProxy.AUX_GL_BUFFER);
-
-        tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
         tes.setColorRGBA_F(1, 1, 1, 1);
-        model.tessellatePart(tes, "lever");
+        model.tessellatePart(tes, "btn_base");
         tes.draw();
+
+        if (isLit) {
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240, 240);
+        }
+
+        tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
+        tes.setTranslation(posX, (isPushed)?-.05F:0, posY);
+        float cMul = 0.6F;
+        if (isLit) {
+            cMul = 1;
+        }
+        tes.setColorRGBA_F(color[0]*cMul, color[1]*cMul, color[2]*cMul, 1F);
+        model.tessellatePart(tes, "btn_top");
+        tes.draw();
+
+        if (isLit) {
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lX, lY);
+        }
 
         GlStateManager.shadeModel(GL11.GL_FLAT);
     }
@@ -94,13 +90,13 @@ public class SwitchToggle extends Control {
     @Override
     @SideOnly(Side.CLIENT)
     public IModelCustom getModel() {
-        return ResourceManager.ctrl_switch_toggle;
+        return ResourceManager.ctrl_button_push;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public ResourceLocation getGuiTexture() {
-        return ResourceManager.ctrl_switch_toggle_gui_tex;
+        return ResourceManager.ctrl_button_push_gui_tex;
     }
 
     @Override
@@ -110,6 +106,6 @@ public class SwitchToggle extends Control {
 
     @Override
     public Control newControl(ControlPanel panel) {
-        return new SwitchToggle(name, panel);
+        return new ButtonPush(name, panel);
     }
 }

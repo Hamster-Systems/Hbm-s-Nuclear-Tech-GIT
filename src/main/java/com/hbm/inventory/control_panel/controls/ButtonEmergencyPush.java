@@ -17,10 +17,9 @@ import org.lwjgl.opengl.GL11;
 import java.util.Collections;
 import java.util.List;
 
+public class ButtonEmergencyPush extends Control {
 
-public class ButtonHazard extends Control {
-
-    public ButtonHazard(String name, ControlPanel panel) {
+    public ButtonEmergencyPush(String name, ControlPanel panel) {
         super(name, panel);
         vars.put("isPushed", new DataValueFloat(0));
     }
@@ -32,7 +31,7 @@ public class ButtonHazard extends Control {
 
     @Override
     public float[] getSize() {
-        return new float[] {1.5F, 1.5F, 1.1F};
+        return new float[] {1.5F, 1.5F, 1.13F};
     }
 
     @Override
@@ -40,7 +39,7 @@ public class ButtonHazard extends Control {
         boolean isPushed = getVar("isPushed").getBoolean();
 
         GlStateManager.shadeModel(GL11.GL_SMOOTH);
-        Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceManager.ctrl_button2_tex);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(ResourceManager.ctrl_button_emergency_push_tex);
         Tessellator tes = Tessellator.instance;
 
         IModelCustom model = getModel();
@@ -52,7 +51,7 @@ public class ButtonHazard extends Control {
         tes.draw();
 
         tes.startDrawing(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
-        tes.setTranslation(posX, (isPushed)?-0.09:0, posY);
+        tes.setTranslation(posX, (isPushed)?-0.125F:0, posY);
         tes.setColorRGBA_F(1, 1, 1, 1);
         model.tessellatePart(tes, "top");
         tes.draw();
@@ -63,22 +62,22 @@ public class ButtonHazard extends Control {
     @Override
     @SideOnly(Side.CLIENT)
     public IModelCustom getModel() {
-        return ResourceManager.ctrl_button2;
+        return ResourceManager.ctrl_button_emergency_push;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public ResourceLocation getGuiTexture() {
-        return ResourceManager.ctrl_button2_gui_tex;
+        return ResourceManager.ctrl_button_emergency_push_gui_tex;
     }
 
     @Override
-	public List<String> getOutEvents() {
-		return Collections.singletonList("ctrl_press");
-	}
+    public List<String> getOutEvents() {
+        return Collections.singletonList("ctrl_press");
+    }
 
     @Override
     public Control newControl(ControlPanel panel) {
-        return new ButtonHazard(name, panel);
+        return new ButtonEmergencyPush(name, panel);
     }
 }
