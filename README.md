@@ -1,12 +1,6 @@
 # <u>**HBM Nuclear Tech Mod - 1.12.2 Hamster Reloaded**</u>
 
-This is Hamster Systems 1.12.2 custom version of the mod.
-
-> **Legacy / reference branch:** This repository is the Minecraft **1.12.2 Hamster Reloaded** codebase and now serves as the primary legacy source/reference for the modern Hamster Reloaded port:
->
-> **[HBMHR-PortUp](https://github.com/Hamster-Systems/HBMHR-PortUp)**
->
-> Modern port development is being carried out separately so this 1.12.2 version can remain available as the historical Hamster Reloaded implementation.
+**Mod will be left as is and will no longer get updates**
 
 # <u> **What have we done?** </u>
 
@@ -28,14 +22,6 @@ which is ported from the original mod made by [HBMTheBobcat](https://github.com/
 The latest 1.12.2 version can be found on [Curse](https://www.curseforge.com/minecraft/mc-mods/hbms-nuclear-tech-hamster-reloaded), under the [Releases page](https://github.com/Hamster-Systems/Hbm-s-Nuclear-Tech-GIT/releases), or on [Modrinth](https://modrinth.com/mod/hbms-nuclear-tech-hamster-reloaded).
 
 The licence for this project can be found in the Licence.MD File.
-
-### **Modern Port**
-
-The official Hamster Reloaded modernisation/porting project is maintained in:
-
-**[Hamster-Systems/HBMHR-PortUp](https://github.com/Hamster-Systems/HBMHR-PortUp)**
-
-The modern project uses this repository as a reference for Hamster Reloaded-specific behaviour, fixes, additions, assets, and historical implementation details. The initial modern target is Minecraft **1.21.1 on NeoForge**.
 
 ### **Want to contribute?**
 
